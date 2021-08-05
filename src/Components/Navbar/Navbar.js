@@ -18,7 +18,7 @@ function Navbar() {
         <div className="menu-icon" onClick={handleMenu}>
           <i className={menu ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
+        <ul className={menu ? "nav-menu active" : "nav-menu"}>
           {menuItems.map((item, index) => {
             return (
               <li key={index}>
