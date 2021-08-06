@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage/home";
-import Login from "./Auth/login";
-import Signup from "./Auth/signup";
+import Login from "./Auth/Login";
+import Signup from "./Auth/Signup";
 import NavBar from "../Components/Navbar/Navbar";
 
 function Routes() {
