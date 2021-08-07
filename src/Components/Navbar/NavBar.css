@@ -15,6 +15,7 @@
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
+  text-decoration: none;
 }
 .fa-ethereum {
   margin-left: 0.5rem;

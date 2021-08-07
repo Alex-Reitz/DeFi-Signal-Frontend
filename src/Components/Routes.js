@@ -5,7 +5,7 @@ import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import NavBar from "../Components/Navbar/Navbar";
 
-function Routes() {
+function Routes({ signup }) {
   return (
     <div>
       <NavBar />
@@ -17,7 +17,7 @@ function Routes() {
           <Login />
         </Route>
         <Route exact path="/signup">
-          <Signup />
+          <Signup signup={signup} />
         </Route>
         <Redirect to="/" />
       </Switch>

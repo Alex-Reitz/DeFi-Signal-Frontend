@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import { menuItems } from "./MenuItem";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -13,7 +13,9 @@ function Navbar() {
     <>
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          DeFi Signal<i className="fab fa-ethereum"></i>
+          <Link className="navbar-logo" to="/">
+            DeFi Signal<i className="fab fa-ethereum"></i>
+          </Link>
         </h1>
         <div className="menu-icon" onClick={handleMenu}>
           <i className={menu ? "fas fa-times" : "fas fa-bars"}></i>

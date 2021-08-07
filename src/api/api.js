@@ -12,7 +12,7 @@ class DeFiSignalApi {
     try {
       return (await axios.Authorization({ url, method, data, params, headers }))
         .data;
-    } catch (error) {
+    } catch (err) {
       console.error("API error: ", err.response);
       let message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
@@ -26,6 +26,7 @@ class DeFiSignalApi {
   //Signup/Register endpoint
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
+    console.log(res);
     return res.token;
   }
 }

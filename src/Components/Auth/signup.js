@@ -4,11 +4,11 @@ import "./Signup.css";
 
 function Signup({ signup }) {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
+    username: "AlexReitz",
+    password: "password",
+    firstName: "alex",
+    lastName: "reitz",
+    email: "spam@gmail.com",
   });
 
   const handleChange = (evt) => {
@@ -21,7 +21,6 @@ function Signup({ signup }) {
 
   const gatherInput = (evt) => {
     evt.preventDefault();
-    console.log({ ...formData });
     signup({ ...formData });
     setFormData({
       username: "",
