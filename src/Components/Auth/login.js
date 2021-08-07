@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { Button } from "../Button";
+import "./Login.css";
 
-function Signup({ login }) {
+function Login({ login }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -25,7 +27,7 @@ function Signup({ login }) {
 
   return (
     <div className="login-form">
-      <h1>Welcome back</h1>
+      <h1 className="heading">Welcome Back</h1>
       <form onSubmit={gatherInput}>
         <div className="login-div">
           <label htmlFor="firstName">
@@ -33,6 +35,7 @@ function Signup({ login }) {
           </label>
           <input
             className="login-input"
+            autofocus
             onChange={handleChange}
             type="text"
             name="username"
@@ -54,10 +57,10 @@ function Signup({ login }) {
           />
         </div>
 
-        <button id="login">Login</button>
+        <Button className="btn">Login</Button>
       </form>
     </div>
   );
 }
 
-export default Signup;
+export default Login;

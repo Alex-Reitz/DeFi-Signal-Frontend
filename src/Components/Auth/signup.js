@@ -1,4 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Button } from "../Button";
+import "./Signup.css";
 
 function Signup({ signup }) {
   const [formData, setFormData] = useState({
@@ -35,7 +37,7 @@ function Signup({ signup }) {
       <form onSubmit={gatherInput}>
         <div className="signup-div">
           <label htmlFor="username">
-            <h6 className="signup-input-label"> Username</h6>
+            <h6 className="signup-input-label">Username</h6>
           </label>
           <input
             className="signup-input"
@@ -49,7 +51,7 @@ function Signup({ signup }) {
         </div>
         <div className="signup-div">
           <label htmlFor="password">
-            <h6 className="signup-input-label"> Password</h6>
+            <h6 className="signup-input-label">Password</h6>
           </label>
           <input
             className="signup-input"
@@ -63,7 +65,7 @@ function Signup({ signup }) {
         </div>
         <div className="signup-div">
           <label htmlFor="firstname">
-            <h6 className="signup-input-label"> First Name</h6>
+            <h6 className="signup-input-label">First Name</h6>
           </label>
           <input
             className="signup-input"
@@ -104,7 +106,7 @@ function Signup({ signup }) {
           />
         </div>
 
-        <button id="signup">Signup!</button>
+        <Button>Signup</Button>
       </form>
     </div>
   );

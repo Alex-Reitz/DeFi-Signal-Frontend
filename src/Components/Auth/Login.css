@@ -1,0 +1,16 @@
+.login-input {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.login-input-label {
+  font-size: 1rem;
+  margin: 5px;
+  padding: 0;
+}
+form {
+  padding: 16px;
+}

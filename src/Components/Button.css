@@ -29,6 +29,7 @@
 .btn--medium {
   padding: 8px 20px;
   border-radius: 4px;
+  margin: 8px;
   font-size: 18px;
   color: #fff;
 }
