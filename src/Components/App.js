@@ -6,18 +6,16 @@ import jwt from "jsonwebtoken";
 import UserContext from "./Auth/UserContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 import DeFiSignalApi from "../api/api";
+import NavBar from "../Components/Navbar/Navbar";
 
 export const TOKEN_ID = "DeFi-signal-token";
 
 function App() {
   const [token, setToken] = useLocalStorage(TOKEN_ID);
   const [currentUser, setCurrentUser] = useState(null);
-  const [infoLoaded, setInfoLoaded] = useState(false);
 
   useEffect(
     function loadUserInfo() {
-      console.debug("App useEffect loadUserInfo", "token=", token);
-
       async function getCurrentUser() {
         if (token) {
           try {
@@ -29,9 +27,7 @@ function App() {
             setCurrentUser(null);
           }
         }
-        setInfoLoaded(true);
       }
-      setInfoLoaded(false);
       getCurrentUser();
     },
     [token]
@@ -63,6 +59,7 @@ function App() {
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser }}>
         <div className="App">
+          <NavBar logout={logout} />
           <Routes signup={signup} login={login} />
         </div>
       </UserContext.Provider>

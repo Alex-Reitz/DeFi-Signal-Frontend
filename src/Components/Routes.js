@@ -3,12 +3,10 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage/home";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
-import NavBar from "../Components/Navbar/Navbar";
 
 function Routes({ signup, login }) {
   return (
     <div>
-      <NavBar />
       <Switch>
         <Route exact path="/">
           <Homepage />
