@@ -35,7 +35,7 @@ function Login({ login }) {
           </label>
           <input
             className="login-input"
-            autofocus
+            autoFocus
             onChange={handleChange}
             type="text"
             name="username"

@@ -5,7 +5,7 @@ import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import NavBar from "../Components/Navbar/Navbar";
 
-function Routes({ signup }) {
+function Routes({ signup, login }) {
   return (
     <div>
       <NavBar />
@@ -14,7 +14,7 @@ function Routes({ signup }) {
           <Homepage />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <Login login={login} />
         </Route>
         <Route exact path="/signup">
           <Signup signup={signup} />

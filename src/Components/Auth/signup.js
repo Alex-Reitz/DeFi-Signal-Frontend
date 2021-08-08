@@ -4,11 +4,11 @@ import "./Signup.css";
 
 function Signup({ signup }) {
   const [formData, setFormData] = useState({
-    username: "AlexReitz",
-    password: "password",
-    firstName: "alex",
-    lastName: "reitz",
-    email: "spam@gmail.com",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
 
   const handleChange = (evt) => {
@@ -41,6 +41,7 @@ function Signup({ signup }) {
           <input
             className="signup-input"
             onChange={handleChange}
+            autoFocus
             type="text"
             name="username"
             placeholder="Max 30 Characters"

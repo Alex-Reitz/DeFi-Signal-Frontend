@@ -6,12 +6,12 @@ class DeFiSignalApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
+    console.log(BASE_URL);
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${DeFiSignalApi.token}` };
     const params = method === "get" ? data : {};
     try {
-      return (await axios.Authorization({ url, method, data, params, headers }))
-        .data;
+      return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API error: ", err.response);
       let message = err.response.data.error.message;
@@ -26,8 +26,12 @@ class DeFiSignalApi {
   //Signup/Register endpoint
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    console.log(res);
     return res.token;
+  }
+  //get current User
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
   }
 }
 

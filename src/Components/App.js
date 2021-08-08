@@ -3,6 +3,7 @@ import "./App.css";
 import Routes from "./Routes";
 import { BrowserRouter } from "react-router-dom";
 import jwt from "jsonwebtoken";
+import UserContext from "./Auth/UserContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 import DeFiSignalApi from "../api/api";
 
@@ -15,15 +16,17 @@ function App() {
 
   useEffect(
     function loadUserInfo() {
+      console.debug("App useEffect loadUserInfo", "token=", token);
+
       async function getCurrentUser() {
         if (token) {
           try {
             let { username } = jwt.decode(token);
             DeFiSignalApi.token = token;
-            let currentUser = DeFiSignalApi.getCurrentUser(username);
+            let currentUser = await DeFiSignalApi.getCurrentUser(username);
             setCurrentUser(currentUser);
-          } catch (error) {
-            console.error("Error loading user info", error);
+          } catch (err) {
+            setCurrentUser(null);
           }
         }
         setInfoLoaded(true);
@@ -47,12 +50,22 @@ function App() {
       return { success: false, error };
     }
   }
-  async function login() {}
+  async function login(loginData) {
+    try {
+      let token = await DeFiSignalApi.login(loginData);
+      setToken(token);
+      return { success: true };
+    } catch (error) {
+      return { success: false, error };
+    }
+  }
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes signup={signup} />
-      </div>
+      <UserContext.Provider value={{ currentUser }}>
+        <div className="App">
+          <Routes signup={signup} login={login} />
+        </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
