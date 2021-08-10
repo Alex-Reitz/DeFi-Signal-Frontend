@@ -22,7 +22,6 @@ function App() {
         if (token) {
           try {
             let { username } = jwt.decode(token);
-            console.log(username);
             DeFiSignalApi.token = token;
             let thisUser = await DeFiSignalApi.getCurrentUser(username);
             setCurrentUser(thisUser);
@@ -68,8 +67,8 @@ function App() {
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser }}>
         <div className="App">
-          <NavBar logout={logout} />
-          <Routes signup={signup} login={login} />
+          <NavBar />
+          <Routes signup={signup} login={login} logout={logout} />
         </div>
       </UserContext.Provider>
     </BrowserRouter>

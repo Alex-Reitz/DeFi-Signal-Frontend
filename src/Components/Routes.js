@@ -3,8 +3,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage/home";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
+import Logout from "./Auth/Logout";
 
-function Routes({ signup, login }) {
+function Routes({ signup, login, logout }) {
   return (
     <div>
       <Switch>
@@ -16,6 +17,9 @@ function Routes({ signup, login }) {
         </Route>
         <Route exact path="/signup">
           <Signup signup={signup} />
+        </Route>
+        <Route exact path="/logout">
+          <Logout logout={logout} />
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -6,7 +6,6 @@ class DeFiSignalApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.log(BASE_URL);
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${DeFiSignalApi.token}` };
     const params = method === "get" ? data : {};
@@ -21,13 +20,11 @@ class DeFiSignalApi {
   //Login endpoint
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
-    console.log("login", res);
     return res;
   }
   //Signup/Register endpoint
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    console.log(res);
     return res;
   }
   //get current User
