@@ -7,12 +7,14 @@ import UserContext from "./Auth/UserContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 import DeFiSignalApi from "../api/api";
 import NavBar from "../Components/Navbar/Navbar";
+import Loading from "./Loading/Loading";
 
 export const TOKEN_ID = "DeFi-signal-token";
 
 function App() {
   const [token, setToken] = useLocalStorage(TOKEN_ID);
   const [currentUser, setCurrentUser] = useState(null);
+  const [infoLoaded, setInfoLoaded] = useState(false);
 
   useEffect(
     function loadUserInfo() {
@@ -20,13 +22,15 @@ function App() {
         if (token) {
           try {
             let { username } = jwt.decode(token);
+            console.log(username);
             DeFiSignalApi.token = token;
-            let currentUser = await DeFiSignalApi.getCurrentUser(username);
-            setCurrentUser(currentUser);
+            let thisUser = await DeFiSignalApi.getCurrentUser(username);
+            setCurrentUser(thisUser);
           } catch (err) {
             setCurrentUser(null);
           }
         }
+        setInfoLoaded(true);
       }
       getCurrentUser();
     },
@@ -37,24 +41,29 @@ function App() {
     setCurrentUser(null);
     setToken(null);
   }
+
   async function signup(signupData) {
     try {
-      let token = await DeFiSignalApi.signup(signupData);
-      setToken(token);
+      let response = await DeFiSignalApi.signup(signupData);
+      setToken(response.token);
       return { success: true };
     } catch (error) {
       return { success: false, error };
     }
   }
+
   async function login(loginData) {
     try {
-      let token = await DeFiSignalApi.login(loginData);
-      setToken(token);
+      let response = await DeFiSignalApi.login(loginData);
+      setToken(response.token);
       return { success: true };
     } catch (error) {
       return { success: false, error };
     }
   }
+
+  if (!infoLoaded) return <Loading />;
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser }}>

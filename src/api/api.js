@@ -21,12 +21,14 @@ class DeFiSignalApi {
   //Login endpoint
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
-    return res.token;
+    console.log("login", res);
+    return res;
   }
   //Signup/Register endpoint
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    return res.token;
+    console.log(res);
+    return res;
   }
   //get current User
   static async getCurrentUser(username) {

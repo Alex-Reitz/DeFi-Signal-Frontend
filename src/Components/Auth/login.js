@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "../Button";
 import "./Login.css";
+import Alert from "../Alert/Alert";
 
 function Login({ login }) {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -16,14 +20,15 @@ function Login({ login }) {
     }));
   };
 
-  const gatherInput = (evt) => {
+  async function gatherInput(evt) {
     evt.preventDefault();
-    login({ ...formData });
-    setFormData({
-      username: "",
-      password: "",
-    });
-  };
+    let result = await login({ ...formData });
+    if (result.success) {
+      history.push("/");
+    } else {
+      setFormErrors(result.error);
+    }
+  }
 
   return (
     <div className="login-form">
@@ -56,6 +61,7 @@ function Login({ login }) {
             id="password"
           />
         </div>
+        {formErrors.length ? <Alert messages={formErrors} /> : null}
 
         <Button className="btn">Login</Button>
       </form>

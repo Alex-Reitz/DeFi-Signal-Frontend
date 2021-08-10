@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
+import Alert from "../Alert/Alert";
 
 function Signup({ signup }) {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -10,6 +13,7 @@ function Signup({ signup }) {
     lastName: "",
     email: "",
   });
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -19,17 +23,16 @@ function Signup({ signup }) {
     }));
   };
 
-  const gatherInput = (evt) => {
+  async function gatherInput(evt) {
     evt.preventDefault();
-    signup({ ...formData });
-    setFormData({
-      username: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-    });
-  };
+    const result = await signup({ ...formData });
+    if (result.success) {
+      history.push("/");
+    } else {
+      console.log(result.error);
+      setFormErrors(result.error);
+    }
+  }
 
   return (
     <div className="Signup">
@@ -105,7 +108,7 @@ function Signup({ signup }) {
             id="email"
           />
         </div>
-
+        {formErrors.length ? <Alert messages={formErrors} /> : null}
         <Button>Signup</Button>
       </form>
     </div>
