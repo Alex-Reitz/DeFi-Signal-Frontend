@@ -4,6 +4,7 @@ import Homepage from "./Homepage/home";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import Logout from "./Auth/Logout";
+import NewsList from "./News/NewsList";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -20,6 +21,9 @@ function Routes({ signup, login, logout }) {
         </Route>
         <Route exact path="/logout">
           <Logout logout={logout} />
+        </Route>
+        <Route exact path="/news">
+          <NewsList />
         </Route>
         <Redirect to="/" />
       </Switch>

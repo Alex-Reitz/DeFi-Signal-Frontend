@@ -32,6 +32,11 @@ class DeFiSignalApi {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
+  //get news
+  static async getNews() {
+    let res = await this.request(`data/news`);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;

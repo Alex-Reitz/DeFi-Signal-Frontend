@@ -14,6 +14,10 @@ export const LoggedInMenuItems = [
     cName: "nav-links",
   },
   {
+    title: "News",
+    cName: "nav-links",
+  },
+  {
     title: "Logout",
     cName: "nav-links",
   },

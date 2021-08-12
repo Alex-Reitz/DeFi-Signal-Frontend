@@ -31,6 +31,7 @@ function App() {
         }
         setInfoLoaded(true);
       }
+      setInfoLoaded(false);
       getCurrentUser();
     },
     [token]
