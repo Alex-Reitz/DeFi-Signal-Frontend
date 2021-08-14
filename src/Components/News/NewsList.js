@@ -17,8 +17,8 @@ function NewsList() {
     getNews();
   }, []);
 
-  console.log(newsArticles);
   if (!infoLoaded) return <Loading />;
+
   return (
     <div className="news-container">
       <h3 className="news-heading">Checkout the latest News from Messari</h3>

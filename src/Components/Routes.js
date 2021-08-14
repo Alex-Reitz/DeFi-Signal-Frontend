@@ -5,6 +5,7 @@ import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import Logout from "./Auth/Logout";
 import NewsList from "./News/NewsList";
+import Protocols from "./Protocols/Protocols";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -24,6 +25,9 @@ function Routes({ signup, login, logout }) {
         </Route>
         <Route exact path="/news">
           <NewsList />
+        </Route>
+        <Route exact path="/protocols">
+          <Protocols />
         </Route>
         <Redirect to="/" />
       </Switch>

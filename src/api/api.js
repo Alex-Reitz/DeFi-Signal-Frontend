@@ -37,6 +37,11 @@ class DeFiSignalApi {
     let res = await this.request(`data/news`);
     return res;
   }
+  //Get protocols from DeFi Llama
+  static async getProtocols() {
+    let res = await this.request(`data/protocols`);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;
