@@ -20,37 +20,39 @@ function Protocols() {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <>
-      <h1>Protocols from DeFi Llama</h1>
+    <div className="protocol-container">
+      <h1 className="protocol-heading">Protocols from DeFi Llama</h1>
       <table className="protocol-table">
-        <tbody>
+        <thead>
           <tr>
             <th className="col-header">Ranking</th>
             <th className="col-header">Symbol</th>
             <th className="col-header">Name</th>
-            <th className="col-header">Market Cap</th>
-            <th className="col-header">Fully Diluted Value</th>
-            <th className="col-header">Chain</th>
-            <th className="col-header">Total Value Locked</th>
             <th className="col-header">Category</th>
+            <th className="col-header">Chain</th>
+            <th className="col-header">Market Cap</th>
+            <th className="col-header">Fully Dilute Value</th>
+            <th className="col-header">Total Value Locked</th>
           </tr>
+        </thead>
+        <tbody>
           {protocols.map((protocol, index) => {
             return (
               <tr key={protocol.id}>
                 <td>{index + 1}</td>
                 <td>{protocol.symbol}</td>
                 <td>{protocol.name}</td>
+                <td>{protocol.category}</td>
+                <td>{protocol.chain}</td>
                 <td>{protocol.mcap}</td>
                 <td>{protocol.fdv}</td>
-                <td>{protocol.chain}</td>
                 <td>{protocol.tvl}</td>
-                <td>{protocol.category}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

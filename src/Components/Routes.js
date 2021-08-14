@@ -6,6 +6,7 @@ import Signup from "./Auth/Signup";
 import Logout from "./Auth/Logout";
 import NewsList from "./News/NewsList";
 import Protocols from "./Protocols/Protocols";
+import Marketdata from "./MarketData/Marketdata";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -28,6 +29,9 @@ function Routes({ signup, login, logout }) {
         </Route>
         <Route exact path="/protocols">
           <Protocols />
+        </Route>
+        <Route exact path="/marketdata">
+          <Marketdata />
         </Route>
         <Redirect to="/" />
       </Switch>

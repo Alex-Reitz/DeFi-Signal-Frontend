@@ -42,6 +42,11 @@ class DeFiSignalApi {
     let res = await this.request(`data/protocols`);
     return res;
   }
+  //Get market data from DeFi Pulse
+  static async getMarketData() {
+    let res = await this.request(`data/marketdata`);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;
