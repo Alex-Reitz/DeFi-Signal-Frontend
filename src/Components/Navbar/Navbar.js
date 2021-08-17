@@ -1,50 +1,98 @@
 import React, { useState, useContext } from "react";
 import "./NavBar.css";
-import { LoggedInMenuItems, LoggedOutMenuItems } from "./MenuItem";
 import { NavLink, Link } from "react-router-dom";
 import UserContext from "../Auth/UserContext";
+import Dropdown from "./Dropdown";
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+
   const handleClick = () => setClick(!click);
-  const handleMenu = () => setMenu(!menu);
+  const closeMobileMenu = () => setClick(false);
 
   const { currentUser } = useContext(UserContext);
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
 
   function loggedInNav() {
     return (
       <>
-        <nav className="NavbarItems">
+        <nav className="navbar">
           <h1 className="navbar-logo">
             <Link className="navbar-logo" to="/">
               DeFi Signal<i className="fab fa-ethereum"></i>
             </Link>
           </h1>
-          <div className="menu-icon" onClick={handleMenu}>
-            <i className={menu ? "fas fa-times" : "fas fa-bars"}></i>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            {LoggedInMenuItems.map((item, index) => {
-              return (
-                <li key={index}>
-                  <NavLink
-                    exact
-                    to={item.title}
-                    onClick={handleClick}
-                    className={item.cName}
-                  >
-                    {item.title}
-                  </NavLink>
-                </li>
-              );
-            })}
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="Home"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+              className="nav-item"
+            >
+              <NavLink
+                exact
+                to="learn"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                Learn <i className="fas fa-caret-down" />
+              </NavLink>
+              {dropdown && <Dropdown />}
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="news"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                News
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="logout"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                Logout
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </>
     );
   }
-  function loggedOutNav() {
+  /* function loggedOutNav() {
     return (
       <>
         <nav className="NavbarItems">
@@ -57,26 +105,32 @@ function Navbar() {
             <i className={menu ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            {LoggedOutMenuItems.map((item, index) => {
-              return (
-                <li key={index}>
-                  <NavLink
-                    exact
-                    to={item.title}
-                    onClick={handleClick}
-                    className={item.cName}
-                  >
-                    {item.title}
-                  </NavLink>
-                </li>
-              );
-            })}
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="login"
+                onClick={handleClick}
+                className="nav-links"
+              >
+                Login
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="signup"
+                onClick={handleClick}
+                className="nav-links"
+              >
+                Signup
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </>
     );
-  }
-  return <>{currentUser ? loggedInNav() : loggedOutNav()}</>;
+  } */
+  return <>{currentUser ? loggedInNav() : loggedInNav()}</>;
 }
 
 export default Navbar;
