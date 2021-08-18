@@ -92,34 +92,35 @@ function Navbar() {
       </>
     );
   }
-  /* function loggedOutNav() {
+  function loggedOutNav() {
     return (
       <>
-        <nav className="NavbarItems">
+        <nav className="navbar">
           <h1 className="navbar-logo">
             <Link className="navbar-logo" to="/">
               DeFi Signal<i className="fab fa-ethereum"></i>
             </Link>
           </h1>
-          <div className="menu-icon" onClick={handleMenu}>
-            <i className={menu ? "fas fa-times" : "fas fa-bars"}></i>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <NavLink
                 exact
                 to="login"
-                onClick={handleClick}
+                onClick={closeMobileMenu}
                 className="nav-links"
               >
                 Login
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink
                 exact
                 to="signup"
-                onClick={handleClick}
+                onClick={closeMobileMenu}
                 className="nav-links"
               >
                 Signup
@@ -129,8 +130,8 @@ function Navbar() {
         </nav>
       </>
     );
-  } */
-  return <>{currentUser ? loggedInNav() : loggedInNav()}</>;
+  }
+  return <>{currentUser ? loggedInNav() : loggedOutNav()}</>;
 }
 
 export default Navbar;

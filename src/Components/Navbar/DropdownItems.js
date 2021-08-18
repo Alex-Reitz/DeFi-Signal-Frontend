@@ -29,4 +29,9 @@ export const DropdownItems = [
     path: "/governance",
     cName: "dropdown-link",
   },
+  {
+    title: "Exchanges",
+    path: "/exchanges",
+    cName: "dropdown-link",
+  },
 ];

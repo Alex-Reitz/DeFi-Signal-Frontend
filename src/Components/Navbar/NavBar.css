@@ -36,6 +36,11 @@
   margin-right: 2rem;
 }
 
+.nav-menu .active {
+  background-color: #6d76f7;
+  border-radius: 4px;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
