@@ -9,7 +9,6 @@ function Marketdata() {
   useEffect(() => {
     async function getData() {
       const res = await DeFiSignalApi.getMarketData();
-      console.log(res.marketData);
       setDefiMarketdata(res.marketData);
       setInfoLoaded(true);
     }

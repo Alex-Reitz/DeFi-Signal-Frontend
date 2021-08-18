@@ -3,7 +3,7 @@ import React from "react";
 function Wallets() {
   return (
     <div className="container">
-      <h2>Learn about Ethereum Wallets</h2>
+      <h2>Wallets</h2>
       <p>
         There are two types of wallets, custodial and non-custodial. Custodial
         wallets are categorized as wallets where third parties hold onto and

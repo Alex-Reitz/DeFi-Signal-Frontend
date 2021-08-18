@@ -52,6 +52,16 @@ function Navbar() {
                 Home
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="learn"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                Learn
+              </NavLink>
+            </li>
             <li
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
@@ -59,11 +69,11 @@ function Navbar() {
             >
               <NavLink
                 exact
-                to="learn"
+                to="marketData"
                 onClick={closeMobileMenu}
                 className="nav-links"
               >
-                Learn <i className="fas fa-caret-down" />
+                Markets <i className="fas fa-caret-down" />
               </NavLink>
               {dropdown && <Dropdown />}
             </li>
