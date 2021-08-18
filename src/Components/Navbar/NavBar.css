@@ -12,17 +12,21 @@
 }
 
 .navbar-logo {
-  color: #fff;
+  display: inline-block;
   justify-self: start;
   margin-left: 5px;
+}
+.navbar-logo-link {
   cursor: pointer;
+  color: #fff;
   text-decoration: none;
   font-size: 2rem;
+  display: inline;
 }
-
 .fa-ethereum {
   margin-left: 0.2rem;
   font-size: 1.8rem;
+  display: inline;
 }
 
 .nav-menu {
