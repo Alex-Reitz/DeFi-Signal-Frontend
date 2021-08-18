@@ -1,10 +1,13 @@
 import React from "react";
+import Collapsible from "./Collapsible";
 
 function StableCoins() {
   return (
-    <div>
-      <h3>StableCoins</h3>
-    </div>
+    <Collapsible label="Stable Coins">
+      <div>
+        <h3>StableCoins</h3>
+      </div>
+    </Collapsible>
   );
 }
 

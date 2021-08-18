@@ -7,6 +7,7 @@
   border-radius: 5px;
   color: #ffffff;
   margin: 0.5rem;
+  display: flex;
 }
 .collapsible .content {
   border: 1px solid #afafaf;
@@ -23,4 +24,8 @@
 
 .collapsible .content-parent.show {
   height: auto;
+}
+
+.fa-caret-down {
+  margin: 2px;
 }

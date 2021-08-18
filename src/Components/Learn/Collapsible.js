@@ -11,6 +11,7 @@ function Collapsible(props) {
     <div className="collapsible">
       <button className="toggle" onClick={() => setIsOpen(!isOpen)}>
         {props.label}
+        <i className="fas fa-caret-down" />
       </button>
       <div
         className="content-parent"
