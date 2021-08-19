@@ -20,38 +20,47 @@ function Protocols() {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <div className="protocol-container">
-      <h1 className="protocol-heading">Protocols from DeFi Llama</h1>
-      <table className="protocol-table">
-        <thead>
-          <tr>
-            <th className="col-header">Ranking</th>
-            <th className="col-header">Symbol</th>
-            <th className="col-header">Name</th>
-            <th className="col-header">Category</th>
-            <th className="col-header">Chain</th>
-            <th className="col-header">Market Cap</th>
-            <th className="col-header">Fully Dilute Value</th>
-            <th className="col-header">Total Value Locked</th>
-          </tr>
-        </thead>
-        <tbody>
-          {protocols.map((protocol, index) => {
-            return (
-              <tr key={protocol.id}>
-                <td>{index + 1}</td>
-                <td>{protocol.symbol}</td>
-                <td>{protocol.name}</td>
-                <td>{protocol.category}</td>
-                <td>{protocol.chain}</td>
-                <td>{protocol.mcap}</td>
-                <td>{protocol.fdv}</td>
-                <td>{protocol.tvl}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="table">
+      <div className="tr th">
+        <div className="td">Ranking</div>
+        <div className="td">Symbol</div>
+        <div className="td">Name</div>
+        <div className="td">Category</div>
+        <div className="td">Chain</div>
+        <div className="td">Market Cap</div>
+        <div className="td">Fully Dilute Value</div>
+        <div className="td">Total Value Locked</div>
+      </div>
+      {protocols.map((protocol, index) => {
+        return (
+          <div key={protocol.id} className="tr">
+            <div className="td">
+              <span>{index + 1}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.symbol}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.name}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.category}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.chain}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.mcap}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.fdv}</span>
+            </div>
+            <div className="td">
+              <span>{protocol.tvl}</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

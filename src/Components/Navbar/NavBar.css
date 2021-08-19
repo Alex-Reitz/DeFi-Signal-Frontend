@@ -19,7 +19,6 @@
 
 .navbar-logo {
   display: inline-block;
-  justify-self: start;
   margin-left: 5px;
   min-width: 0;
   min-height: 0;
@@ -43,7 +42,7 @@
   grid-gap: 0px;
   list-style: none;
   text-align: center;
-  width: 70vw;
+  width: 80vw;
   justify-content: end;
 }
 
@@ -110,7 +109,7 @@
   .nav-links {
     text-align: center;
     padding: 1rem;
-    width: 80%;
+    width: 95%;
     display: table;
   }
 
