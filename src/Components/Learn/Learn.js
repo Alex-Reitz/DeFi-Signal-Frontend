@@ -7,10 +7,11 @@ import StableCoins from "./StableCoins";
 import Wallets from "./Wallets";
 import Derivatives from "./Derivatives";
 import Dexes from "./Dexes";
+import "./Learn.css";
 
 function Learn() {
   return (
-    <div>
+    <div className="learn-container">
       <Wallets />
       <Derivatives />
       <Dexes />

@@ -35,7 +35,7 @@ function Navbar() {
         <nav className="navbar">
           <h1 className="navbar-logo">
             <Link className="navbar-logo-link" to="/">
-              DeFi Signal
+              DΞFI Signal
               <i className="fab fa-ethereum"></i>
             </Link>
           </h1>
