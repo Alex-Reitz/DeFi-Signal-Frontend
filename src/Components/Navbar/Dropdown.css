@@ -4,6 +4,7 @@
   top: 60px;
   list-style: none;
   text-align: start;
+  z-index: 3;
 }
 .dropdown-menu li {
   background: rgb(110, 94, 254);

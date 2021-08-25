@@ -22,28 +22,41 @@ function EthGas() {
 
   return (
     <div className="gas-container">
+      <i className="fab fa-ethereum"></i>
       <div className="gwei-fees">
-        <p className="gas-data">
-          Average price {gasData.gas.average / 10} gwei
+        <p className="gas-data eth-gas">
+          <strong>Average:</strong> {gasData.gas.average / 10} gwei
         </p>
-        <p className="gas-data">Fast: {gasData.gas.fast / 10} gwei</p>
-        <p className="gas-data">Fastest: {gasData.gas.fastest / 10} gwei</p>
-        <p className="gas-data">safeLow: {gasData.gas.safeLow / 10} gwei</p>
+        <p className="gas-data eth-gas">
+          <strong>Fast:</strong> {gasData.gas.fast / 10} gwei
+        </p>
+        <p className="gas-data eth-gas">
+          <strong>Fastest:</strong> {gasData.gas.fastest / 10} gwei
+        </p>
+        <p className="gas-data eth-gas">
+          <strong>SafeLow: </strong>
+          {gasData.gas.safeLow / 10} gwei
+        </p>
       </div>
       <div className="gas-time">
-        <p className="gas-data">Block Time: {gasData.gas.block_time} seconds</p>
-        <p className="gas-data">Latest Block Number: {gasData.gas.blockNum}</p>
-        <p className="gas-data">
-          Speed - smallest value of gasUsed/gasLimit from last ten blocks:{" "}
-          {gasData.gas.speed}
+        <p className="gas-data gas-metric">
+          <strong>Block Time:</strong> {gasData.gas.block_time} seconds
         </p>
-        <p className="gas-data">
-          Safe Low Wait: {gasData.gas.safeLowWait} seconds
+        <p className="gas-data gas-metric">
+          <strong>Latest Block Number:</strong> {gasData.gas.blockNum}
         </p>
-        <p className="gas-data">Average Wait: {gasData.gas.avgWait} minutes</p>
-        <p className="gas-data">Fast Wait: {gasData.gas.fastWait} minutes</p>
-        <p className="gas-data">
-          Fastest Wait: {gasData.gas.fastestWait} minutes
+        <p className="gas-data gas-metric">
+          <strong>Safe Low Wait:</strong> {gasData.gas.safeLowWait} seconds
+        </p>
+        <p className="gas-data gas-metric">
+          <strong>Average Wait:</strong> {gasData.gas.avgWait} minutes
+        </p>
+        <p className="gas-data gas-metric">
+          <strong>Fast Wait:</strong> {gasData.gas.fastWait} minutes
+        </p>
+        <p className="gas-data gas-metric">
+          <strong>Fastest Wait:</strong>
+          {gasData.gas.fastestWait} minutes
         </p>
       </div>
     </div>
