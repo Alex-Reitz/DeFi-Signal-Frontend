@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+
+.home-container {
+  display: grid;
+  place-items: center;
+}
+
+.home-heading {
+  margin: 0;
+  padding: 5px;
+}
+
+.home-intro {
+  padding: 5px;
+  margin: 0px 100px;
+}

@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.gas-container {
+  display: grid;
+  width: 90vw;
+  height: 15vh;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 1rem;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-areas:
+    "logo gwei-fees times"
+    "logo gwei-fees times";
+}
+
+.gas-data {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.gwei-fees {
+  grid-area: gwei-fees;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gas-time {
+  grid-area: times;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
