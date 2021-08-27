@@ -18,7 +18,6 @@ function EthGas() {
   }, []);
 
   if (!infoLoaded) return <Loading />;
-  console.log(gasData);
 
   return (
     <div className="gas-container">

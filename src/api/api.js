@@ -52,6 +52,12 @@ class DeFiSignalApi {
     let res = await this.request(`data/gasdata`);
     return res;
   }
+  //Get chart Data - DeFi Llama
+  static async charts() {
+    let res = await this.request(`data/charts`);
+    console.log(res.charts);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;

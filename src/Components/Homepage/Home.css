@@ -19,3 +19,9 @@ html {
   padding: 5px;
   margin: 0px 100px;
 }
+
+section {
+  background-color: #132737;
+  min-height: 100vh;
+  min-width: 100vw;
+}
