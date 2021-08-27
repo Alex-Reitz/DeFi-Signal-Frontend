@@ -52,11 +52,35 @@ class DeFiSignalApi {
     let res = await this.request(`data/gasdata`);
     return res;
   }
-  //Get chart Data - DeFi Llama
+  //Get chart data - DeFi Llama
   static async charts() {
     let res = await this.request(`data/charts`);
     console.log(res.charts);
-    return res;
+    return res.charts;
+  }
+  //Get Eth chart data - DeFi Llama
+  static async EthChart() {
+    let res = await this.request(`data/ethchart`);
+    console.log(res.charts);
+    return res.charts;
+  }
+  //Get Binance chart data - DeFi Llama
+  static async BinanceChart() {
+    let res = await this.request(`data/binancechart`);
+    console.log(res.charts);
+    return res.charts;
+  }
+  //Get Solana chart data - DeFi Llama
+  static async SolanaChart() {
+    let res = await this.request(`data/solanachart`);
+    console.log(res.charts);
+    return res.charts;
+  }
+  //Get Polygon chart data - DeFi Llama
+  static async PolygonChart() {
+    let res = await this.request(`data/polygonchart`);
+    console.log(res.charts);
+    return res.charts;
   }
 }
 

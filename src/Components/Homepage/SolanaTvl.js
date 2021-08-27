@@ -3,18 +3,18 @@ import { Line } from "react-chartjs-2";
 import DeFiSignalApi from "../../api/api";
 import Loading from "../Loading/Loading";
 
-function TotalTvl() {
+function SolanaTvl() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    async function getCharts() {
-      const res = await DeFiSignalApi.charts();
+    async function getEthChart() {
+      const res = await DeFiSignalApi.SolanaChart();
       setChartData(res);
       setInfoLoaded(true);
     }
     setInfoLoaded(false);
-    getCharts();
+    getEthChart();
   }, []);
 
   const data = {
@@ -28,7 +28,7 @@ function TotalTvl() {
         }),
         fill: true,
         backgroundColor: "#2e4355",
-        pointBorderColor: "#8884d8",
+        pointBorderColor: "#fff",
         pointBorderWidth: 0,
         pointRadius: 0,
         tension: 0.4,
@@ -49,7 +49,7 @@ function TotalTvl() {
           },
         },
         grid: {
-          color: "#243240",
+          color: "black",
         },
       },
       x: {
@@ -64,6 +64,7 @@ function TotalTvl() {
   };
 
   if (!infoLoaded) return <Loading />;
+  console.log(chartData);
   return (
     <div>
       <Line data={data} options={options} />
@@ -71,4 +72,4 @@ function TotalTvl() {
   );
 }
 
-export default TotalTvl;
+export default SolanaTvl;
