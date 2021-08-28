@@ -1,0 +1,17 @@
+.news-container {
+  display: grid;
+
+  background-color: rgb(33, 36, 40);
+}
+.news-heading {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 8px;
+  color: #fff;
+  margin: 5px;
+}
+.outer-article-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

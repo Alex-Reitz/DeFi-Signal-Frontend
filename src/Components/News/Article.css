@@ -1,0 +1,48 @@
+.article-title {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.article-published {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #fff;
+}
+.article-author {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #fff;
+}
+.article-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #fff;
+}
+.article-tags {
+  display: flex;
+  justify-content: center;
+  font-size: 0.6rem;
+  margin: 5px;
+}
+.article-full-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+.article-full-link a {
+  text-decoration: none;
+
+  color: #fff;
+  font-style: italic;
+}

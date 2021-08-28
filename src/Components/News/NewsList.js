@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DeFiSignalApi from "../../api/api";
 import Article from "./Article";
 import Loading from "../Loading/Loading";
+import "./NewsList.css";
 
 function NewsList() {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -21,10 +22,12 @@ function NewsList() {
 
   return (
     <div className="news-container">
-      <h3 className="news-heading">Checkout the latest News from Messari</h3>
-      {newsArticles.map((article) => (
-        <Article key={article.id} info={article} />
-      ))}
+      <h3 className="news-heading">Latest Crypto News from Messari</h3>
+      <div className="outer-article-container">
+        {newsArticles.map((article) => (
+          <Article key={article.id} info={article} />
+        ))}
+      </div>
     </div>
   );
 }
