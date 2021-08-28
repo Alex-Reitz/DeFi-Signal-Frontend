@@ -29,35 +29,46 @@ function TotalTvl() {
         fill: true,
         backgroundColor: "#2e4355",
         pointBorderColor: "#8884d8",
-        pointBorderWidth: 0,
+        pointBorderWidth: 2,
+        showLine: true,
         pointRadius: 0,
-        tension: 0.4,
+        tension: 0.6,
+        borderColor: "white",
       },
     ],
   };
 
   const options = {
-    responsive: true,
-    plugins: { legend: { display: false } },
+    maintainAspectRatio: true,
     layout: { padding: { bottom: 100 } },
+    plugins: {
+      title: {
+        display: true,
+        text: "Total Value Locked",
+        color: "white",
+        font: {
+          size: 18,
+        },
+      },
+      legend: {
+        display: false,
+      },
+    },
     scales: {
       y: {
         ticks: {
           color: "white",
-          font: {
-            size: 10,
-          },
         },
         grid: {
           color: "#243240",
         },
       },
       x: {
+        grid: {
+          display: false,
+        },
         ticks: {
           color: "white",
-          font: {
-            size: 10,
-          },
         },
       },
     },

@@ -11,10 +11,11 @@ function Home() {
   return (
     <div className="home-container">
       <section>
-        <EthGas />
+        <div className="initial-container">
+          <EthGas />
+        </div>
       </section>
       <section>
-        <h5>Total TVl</h5>
         <TotalTvl />
       </section>
       <section>

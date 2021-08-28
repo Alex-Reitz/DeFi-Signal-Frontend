@@ -6,7 +6,8 @@
 
 .gas-container {
   display: grid;
-  width: 90vw;
+  color: rgb(241, 220, 220);
+  width: 90%;
   height: 15vh;
   border: 1px solid black;
   border-radius: 15px;

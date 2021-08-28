@@ -64,7 +64,6 @@ function PolygonTvl() {
   };
 
   if (!infoLoaded) return <Loading />;
-  console.log(chartData);
   return (
     <div>
       <Line data={data} options={options} />
