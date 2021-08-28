@@ -108,8 +108,9 @@ function Navbar() {
       <>
         <nav className="navbar">
           <h1 className="navbar-logo">
-            <Link className="navbar-logo" to="/">
-              DeFi Signal<i className="fab fa-ethereum"></i>
+            <Link className="navbar-logo-link" to="/">
+              DΞFI Signal
+              <i className="fab fa-ethereum"></i>
             </Link>
           </h1>
           <div className="menu-icon" onClick={handleClick}>

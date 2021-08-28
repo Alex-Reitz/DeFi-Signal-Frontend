@@ -32,11 +32,11 @@ function Login({ login }) {
 
   return (
     <div className="login-form">
-      <h1 className="heading">Welcome Back</h1>
+      <h1 className="login-heading">Welcome Back</h1>
       <form onSubmit={gatherInput}>
         <div className="login-div">
           <label htmlFor="firstName">
-            <h6 className="login-input-label">Username</h6>
+            <h6 className="login-input-label"></h6>
           </label>
           <input
             className="login-input"
@@ -44,26 +44,30 @@ function Login({ login }) {
             onChange={handleChange}
             type="text"
             name="username"
+            placeholder="Username"
             value={formData.username}
             id="username"
           />
         </div>
         <div className="login-div">
           <label htmlFor="firstName">
-            <h6 className="login-input-label">Password</h6>
+            <h6 className="login-input-label"></h6>
           </label>
           <input
             className="login-input"
             onChange={handleChange}
             type="password"
             name="password"
+            placeholder="Password"
             value={formData.password}
             id="password"
           />
         </div>
         {formErrors.length ? <Alert messages={formErrors} /> : null}
-
-        <Button className="btn">Login</Button>
+        <div className="login-button">
+          {" "}
+          <Button>Login</Button>{" "}
+        </div>
       </form>
     </div>
   );

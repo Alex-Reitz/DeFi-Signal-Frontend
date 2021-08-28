@@ -7,11 +7,11 @@
   z-index: 3;
 }
 .dropdown-menu li {
-  background: rgb(110, 94, 254);
+  background: #0000ff;
   cursor: pointer;
 }
 .dropdown-menu li:hover {
-  background: #5cabff;
+  background: #0000cd;
 }
 .dropdown-menu.clicked {
   display: none;

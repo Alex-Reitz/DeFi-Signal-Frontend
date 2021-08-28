@@ -35,8 +35,8 @@ function Signup({ signup }) {
   }
 
   return (
-    <div className="Signup">
-      <form onSubmit={gatherInput}>
+    <div className="signup">
+      <form className="signup-form" onSubmit={gatherInput}>
         <div className="signup-div">
           <label htmlFor="username">
             <h6 className="signup-input-label">Username</h6>
@@ -109,7 +109,10 @@ function Signup({ signup }) {
           />
         </div>
         {formErrors.length ? <Alert messages={formErrors} /> : null}
-        <Button>Signup</Button>
+        <div className="signup-button">
+          {" "}
+          <Button>Login</Button>{" "}
+        </div>
       </form>
     </div>
   );

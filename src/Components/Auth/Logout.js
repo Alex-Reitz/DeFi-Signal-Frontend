@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "../Button";
+import "./Logout.css";
 
 function Logout({ logout }) {
   return (
     <div className="logout-container">
-      <h4 className="exit-message">Logout, See you next time!</h4>
       <Button
         onClick={() => {
           logout();
