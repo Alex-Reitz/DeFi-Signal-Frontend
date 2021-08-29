@@ -2,16 +2,17 @@
   display: flex;
   flex-flow: column nowrap;
   font-size: 0.8rem;
-  margin: 0.5rem;
+  margin: 0;
   line-height: 1.5;
   border-bottom: 1px solid #d0d0d0;
   flex: 1 1 auto;
+  color: ;
 }
 
 .th {
   display: none;
-  font-weight: 700;
-  background-color: #f2f2f2;
+  font-weight: 900;
+  color: rgb(246, 247, 249);
 }
 
 .th > .td {
@@ -23,14 +24,20 @@
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
+  color: rgb(246, 247, 249);
+  font-size: 1rem;
+}
+
+tr:first {
+  background-color: rgb(246, 247, 249);
 }
 
 .tr:nth-of-type(even) {
-  background-color: #f2f2f2;
+  background-color: rgb(33, 36, 40);
 }
 
 .tr:nth-of-type(odd) {
-  background-color: #ffffff;
+  background-color: rgb(20, 20, 20);
 }
 
 .td {
@@ -44,6 +51,5 @@
   text-overflow: ellipsis;
   min-width: 0px;
   white-space: nowrap;
-  border-bottom: 1px solid #d0d0d0;
   justify-content: center;
 }

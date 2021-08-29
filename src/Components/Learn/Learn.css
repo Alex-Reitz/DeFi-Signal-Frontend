@@ -8,17 +8,36 @@
   color: rgb(246, 247, 249);
   width: 100%;
 }
-
-section {
+.top-section {
   height: 95vh;
   width: 80%;
   margin: auto;
 }
-
-.home-heading {
+.learn-heading {
   margin: 1rem;
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+}
+.learn-intro {
+  font-size: 1.25rem;
+}
+.learn-intro a {
+  color: rgb(246, 247, 249);
 }
 
-.home-intro {
+/* Wallet Section */
+.wallet-section {
+  height: 100vh;
+  width: 80%;
+  margin: auto;
+}
+.wallet-text {
   font-size: 1.25rem;
+}
+hr {
+  margin: 1rem;
+}
+.wallet-section a {
+  color: rgb(246, 247, 249);
 }

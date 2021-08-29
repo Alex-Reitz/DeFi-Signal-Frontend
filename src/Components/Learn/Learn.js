@@ -12,10 +12,10 @@ import "./Learn.css";
 function Learn() {
   return (
     <div className="learn-container">
-      <section>
-        <h3 className="home-heading">What is Defi?</h3>
-        <p className="home-intro">
-          DeFi is short for “decentralized finance,” an umbrella term for a
+      <section className="top-section">
+        <h3 className="learn-heading">What is Defi?</h3>
+        <p className="learn-intro">
+          DeFi is short for “decentralized finance” an umbrella term for a
           variety of financial applications in cryptocurrency or blockchain
           geared toward disrupting financial intermediaries. Defi is not a
           single product or company, but rather a range of financial services
@@ -30,21 +30,36 @@ function Learn() {
             target="_blank"
             href="https://ethereum.org/en/what-is-ethereum/"
           >
-            Ethereum.org
+            <em>Ethereum.org</em>
           </a>
           . Learning about Ethereum isn't required to learn about Defi, but it
           is recommended. Nothing seen here on DeFi Signal is financial advice.
         </p>
       </section>
-
-      <Wallets />
-      <Derivatives />
-      <Dexes />
-      <Governance />
-      <Insurance />
-      <LendingBorrowing />
-      <Lottery />
-      <StableCoins />
+      <section className="wallet-section">
+        <Wallets />
+      </section>
+      <section className="derivatives-section">
+        <Derivatives />
+      </section>
+      <section className="dexes-section">
+        <Dexes />
+      </section>
+      <section className="governance-section">
+        <Governance />
+      </section>
+      <section className="insurance-section">
+        <Insurance />
+      </section>
+      <section className="lending-borrowing-section">
+        <LendingBorrowing />
+      </section>
+      <section className="lottery-section">
+        <Lottery />
+      </section>
+      <section className="stablecoins-section">
+        <StableCoins />
+      </section>
     </div>
   );
 }

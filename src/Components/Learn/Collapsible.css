@@ -3,7 +3,7 @@
   border: unset;
   cursor: pointer;
   font: unset;
-  padding: 0.3rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   color: #ffffff;
   margin: 0.5rem;
@@ -11,21 +11,18 @@
 }
 .collapsible .content {
   border: 1px solid #afafaf;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 5px;
   margin: 0.5rem;
 }
-
 .collapsible .content-parent {
   height: 0px;
   overflow: hidden;
   transition: height ease 0.3s;
 }
-
 .collapsible .content-parent.show {
   height: auto;
 }
-
 .fa-caret-down {
   margin: 2px;
 }
