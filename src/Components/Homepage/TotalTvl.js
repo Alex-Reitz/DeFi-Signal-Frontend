@@ -44,7 +44,7 @@ function TotalTvl() {
     plugins: {
       title: {
         display: true,
-        text: "Total Value Locked",
+        text: "Total Value Locked - All Chains",
         color: "white",
         font: {
           size: 18,

@@ -4,20 +4,6 @@
   margin: 0;
 }
 
-.gas-container {
-  display: grid;
-  color: rgb(241, 220, 220);
-  width: 90%;
-  height: 15vh;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin: 1rem;
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-template-areas:
-    "logo gwei-fees times"
-    "logo gwei-fees times";
-}
-
 .gas-container i {
   display: flex;
   align-items: center;
@@ -26,10 +12,26 @@
   font-size: 3rem;
 }
 
-.gas-data {
-  position: relative;
-  padding: 0;
-  margin: 0;
+.gas-container {
+  display: grid;
+  color: rgb(241, 220, 220);
+  width: 90%;
+  height: 10vh;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 1rem;
+  grid-template-columns: 0.5fr 1fr 2fr 1fr;
+  grid-template-areas:
+    "logo gwei-fees times wait"
+    "logo gwei-fees times wait";
+}
+
+.gascard-image {
+  grid-area: logo;
+  height: 95%;
+  width: 95%;
+  margin: 0.1rem;
+  border-radius: 10px;
 }
 
 .gwei-fees {
@@ -40,20 +42,44 @@
   align-items: flex-start;
 }
 
+.gas-data {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.eth-gas {
+  font-size: 1rem;
+  margin: 0.1rem;
+}
+
 .gas-time {
   grid-area: times;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.eth-gas-time {
+  font-size: 1rem;
+  margin: 0.1rem;
+}
+
+.gas-wait {
+  grid-area: wait;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.eth-gas-wait {
+  font-size: 1rem;
+  margin: 0.1rem;
 }
 
 .gas-metric {
   font-size: 0.8rem;
-  margin: 0.1rem;
-}
-
-.eth-gas {
-  font-size: 1.2rem;
   margin: 0.1rem;
 }

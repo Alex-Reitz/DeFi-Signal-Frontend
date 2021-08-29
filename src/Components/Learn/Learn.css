@@ -4,4 +4,21 @@
 .learn-container {
   display: grid;
   grid-template-columns: 1fr;
+  background-color: rgb(33, 36, 40);
+  color: rgb(246, 247, 249);
+  width: 100%;
+}
+
+section {
+  height: 95vh;
+  width: 80%;
+  margin: auto;
+}
+
+.home-heading {
+  margin: 1rem;
+}
+
+.home-intro {
+  font-size: 1.25rem;
 }

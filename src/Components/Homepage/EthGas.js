@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DeFiSignalApi from "../../api/api";
 import Loading from "../Loading/Loading";
 import "./EthGas.css";
+import EthCoin from "../../images/ethereum-1.svg";
 
 function EthGas() {
   const [gasData, setGasData] = useState([]);
@@ -21,7 +22,7 @@ function EthGas() {
 
   return (
     <div className="gas-container">
-      <i className="fab fa-ethereum"></i>
+      <img className="gascard-image" src={EthCoin} alt="Eth" />
       <div className="gwei-fees">
         <p className="gas-data eth-gas">
           <strong>Average:</strong> {gasData.gas.average / 10} gwei
@@ -38,24 +39,25 @@ function EthGas() {
         </p>
       </div>
       <div className="gas-time">
-        <p className="gas-data gas-metric">
+        <p className="gas-data eth-gas-time">
           <strong>Block Time:</strong> {gasData.gas.block_time} seconds
         </p>
-        <p className="gas-data gas-metric">
+        <p className="gas-data eth-gas-time">
           <strong>Latest Block Number:</strong> {gasData.gas.blockNum}
         </p>
-        <p className="gas-data gas-metric">
+      </div>
+      <div className="gas-wait">
+        <p className="gas-data eth-gas-wait">
           <strong>Safe Low Wait:</strong> {gasData.gas.safeLowWait} seconds
         </p>
-        <p className="gas-data gas-metric">
+        <p className="gas-data eth-gas-wait">
           <strong>Average Wait:</strong> {gasData.gas.avgWait} minutes
         </p>
-        <p className="gas-data gas-metric">
+        <p className="gas-data eth-gas-wait">
           <strong>Fast Wait:</strong> {gasData.gas.fastWait} minutes
         </p>
-        <p className="gas-data gas-metric">
-          <strong>Fastest Wait:</strong>
-          {gasData.gas.fastestWait} minutes
+        <p className="gas-data eth-gas-wait">
+          <strong>Fastest Wait:</strong> {gasData.gas.fastestWait} minutes
         </p>
       </div>
     </div>
