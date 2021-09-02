@@ -10,7 +10,7 @@ function TotalTvl() {
   useEffect(() => {
     async function getCharts() {
       const res = await DeFiSignalApi.charts();
-      setChartData(res);
+      setChartData(res.slice(600));
       setInfoLoaded(true);
     }
     setInfoLoaded(false);
@@ -19,7 +19,8 @@ function TotalTvl() {
 
   const data = {
     labels: chartData.map(function (a) {
-      return a.date;
+      var date = new Date(a.date * 1000);
+      return date.toLocaleDateString();
     }),
     datasets: [
       {
@@ -40,14 +41,15 @@ function TotalTvl() {
 
   const options = {
     maintainAspectRatio: true,
-    layout: { padding: { bottom: 100 } },
+    layout: { padding: { bottom: 50 } },
     plugins: {
       title: {
         display: true,
+        align: "p",
         text: "Total Value Locked - All Chains",
         color: "white",
         font: {
-          size: 18,
+          size: 20,
         },
       },
       legend: {
@@ -58,12 +60,16 @@ function TotalTvl() {
       y: {
         ticks: {
           color: "white",
+          callback: function (value) {
+            return "$" + value.toLocaleString();
+          },
         },
         grid: {
-          color: "#243240",
+          display: false,
         },
       },
       x: {
+        borderColor: "white",
         grid: {
           display: false,
         },
@@ -76,7 +82,7 @@ function TotalTvl() {
 
   if (!infoLoaded) return <Loading />;
   return (
-    <div>
+    <div className="line-totaltvl">
       <Line data={data} options={options} />
     </div>
   );

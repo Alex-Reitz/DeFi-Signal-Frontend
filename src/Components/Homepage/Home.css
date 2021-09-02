@@ -13,3 +13,24 @@ section {
   height: 100vh;
   width: 100%;
 }
+
+.line-totaltvl {
+  width: 80%;
+  margin: auto;
+}
+.line-ethtvl {
+  width: 80%;
+  margin: auto;
+}
+.line-binancetvl {
+  width: 80%;
+  margin: auto;
+}
+.line-solanatvl {
+  width: 80%;
+  margin: auto;
+}
+.line-polygontvl {
+  width: 80%;
+  margin: auto;
+}

@@ -19,19 +19,15 @@ function Home() {
         <TotalTvl />
       </section>
       <section>
-        <h5>Ethereum TVl</h5>
         <EthTvl />
       </section>
       <section>
-        <h5>Binance TVl</h5>
         <BinanceTvl />
       </section>
       <section>
-        <h5>Solana TVL</h5>
         <SolanaTvl />
       </section>
       <section>
-        <h5>Polygon TVL</h5>
         <PolygonTvl />
       </section>
     </div>
