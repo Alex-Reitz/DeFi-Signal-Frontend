@@ -47,6 +47,11 @@ class DeFiSignalApi {
     let res = await this.request(`data/marketdata`);
     return res;
   }
+  //Get eth metrics from Messari
+  static async getEthMetrics() {
+    let res = await this.request(`data/ethmetrics`);
+    return res;
+  }
   //Get gas data - DeFi Pulse
   static async getGas() {
     let res = await this.request(`data/gasdata`);

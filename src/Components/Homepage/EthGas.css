@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+.ethgas-header {
+  margin: 0.2rem 0 0 0;
+  padding: 0.25rem;
+  color: rgb(241, 220, 220);
+}
+
 .gas-container i {
   display: flex;
   align-items: center;
@@ -19,7 +25,7 @@
   height: 10vh;
   border: 1px solid black;
   border-radius: 15px;
-  margin: 1rem;
+  margin: 0.1rem 0 0 0.1rem;
   grid-template-columns: 0.5fr 1fr 2fr 1fr;
   grid-template-areas:
     "logo gwei-fees times wait"
@@ -28,9 +34,9 @@
 
 .gascard-image {
   grid-area: logo;
-  height: 95%;
-  width: 95%;
-  margin: 0.1rem;
+  height: 70%;
+  width: 70%;
+  margin: auto;
   border-radius: 10px;
 }
 

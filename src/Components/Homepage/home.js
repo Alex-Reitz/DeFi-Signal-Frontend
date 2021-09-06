@@ -6,6 +6,7 @@ import EthTvl from "./EthTvl";
 import BinanceTvl from "./BinanceTvl";
 import SolanaTvl from "./SolanaTvl";
 import PolygonTvl from "./PolygonTvl";
+import EthMetrics from "./EthMetrics";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <section>
         <div className="initial-container">
           <EthGas />
+          <EthMetrics />
         </div>
       </section>
       <section>
