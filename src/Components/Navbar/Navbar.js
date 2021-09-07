@@ -36,7 +36,6 @@ function Navbar() {
           <h1 className="navbar-logo">
             <Link className="navbar-logo-link" to="/">
               DΞFI Signal
-              <i className="fab fa-ethereum"></i>
             </Link>
           </h1>
           <div className="menu-icon" onClick={handleClick}>
@@ -110,7 +109,6 @@ function Navbar() {
           <h1 className="navbar-logo">
             <Link className="navbar-logo-link" to="/">
               DΞFI Signal
-              <i className="fab fa-ethereum"></i>
             </Link>
           </h1>
           <div className="menu-icon" onClick={handleClick}>
