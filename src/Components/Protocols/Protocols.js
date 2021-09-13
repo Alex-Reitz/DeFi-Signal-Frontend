@@ -10,7 +10,7 @@ function Protocols() {
   useEffect(() => {
     async function getProtocolData() {
       const res = await DeFiSignalApi.getProtocols();
-      setProtocols(res.protocols);
+      setProtocols(res.protocols.slice(50));
       setInfoLoaded(true);
     }
     setInfoLoaded(false);
@@ -28,7 +28,6 @@ function Protocols() {
         <div className="td">Category</div>
         <div className="td">Chain</div>
         <div className="td">Market Cap</div>
-        <div className="td">Fully Dilute Value</div>
         <div className="td">Total Value Locked</div>
       </div>
       {protocols.map((protocol, index) => {
@@ -50,13 +49,12 @@ function Protocols() {
               <span>{protocol.chain}</span>
             </div>
             <div className="td">
-              <span>{protocol.mcap}</span>
+              <span>
+                {protocol.mcap ? `$${protocol.mcap.toLocaleString()}` : "-"}
+              </span>
             </div>
             <div className="td">
-              <span>{protocol.fdv}</span>
-            </div>
-            <div className="td">
-              <span>{protocol.tvl}</span>
+              <span>${protocol.tvl.toLocaleString()}</span>
             </div>
           </div>
         );
