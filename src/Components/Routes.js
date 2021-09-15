@@ -8,6 +8,7 @@ import NewsList from "./News/NewsList";
 import Protocols from "./Protocols/Protocols";
 import Marketdata from "./MarketData/Marketdata";
 import Learn from "./Learn/Learn";
+import UserProfile from "./User/Profile";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -37,7 +38,9 @@ function Routes({ signup, login, logout }) {
         <Route exact path="/learn">
           <Learn />
         </Route>
-
+        <Route exact path="/profile">
+          <UserProfile />
+        </Route>
         <Redirect to="/" />
       </Switch>
     </div>

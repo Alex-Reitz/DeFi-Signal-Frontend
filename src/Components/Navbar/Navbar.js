@@ -90,6 +90,16 @@ function Navbar() {
             <li className="nav-item">
               <NavLink
                 exact
+                to="profile"
+                onClick={closeMobileMenu}
+                className="nav-links"
+              >
+                {currentUser.username}
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
                 to="logout"
                 onClick={closeMobileMenu}
                 className="nav-links"
