@@ -60,9 +60,6 @@ function BinanceTvl() {
       y: {
         ticks: {
           color: "white",
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
         },
         grid: {
           display: false,
@@ -77,6 +74,18 @@ function BinanceTvl() {
           color: "white",
         },
       },
+    },
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
+    interaction: {
+      mode: "index",
+      intersect: false,
     },
   };
 

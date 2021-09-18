@@ -31,7 +31,7 @@ function Marketdata() {
             <p>Dominance Value: {defiMarketdata.All.dominance_value}</p>
             <p>Percent Dominance: {defiMarketdata.All.dominance_pct}</p>
             <p>Value in Ethereum: {defiMarketdata.All.value.total.ETH.value}</p>
-            <p>TVL Ethereum Locked: {defiMarketdata.All.value.tvl.ETH.value}</p>
+            <p>TVL In Ethereum: {defiMarketdata.All.value.tvl.ETH.value}</p>
           </div>
         </div>
 
