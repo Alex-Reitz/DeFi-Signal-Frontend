@@ -27,17 +27,17 @@
 }
 
 /* Wallet Section */
-.wallet-section {
+.item-section {
   height: 100vh;
   width: 80%;
   margin: auto;
 }
-.wallet-text {
+.item-text {
   font-size: 1.25rem;
 }
 hr {
   margin: 1rem;
 }
-.wallet-section a {
+.item-section a {
   color: rgb(246, 247, 249);
 }

@@ -3,9 +3,9 @@ import Collapsible from "./Collapsible";
 
 function Wallets() {
   return (
-    <div className="wallet-container">
+    <div className="item-container">
       <h1 className="learn-heading">Wallets</h1>
-      <p className="wallet-text">
+      <p className="item-text">
         Wallets are applications that allow you to interact with your crypto
         assets.There are two types of wallets, custodial and non-custodial.
         Custodial wallets are categorized as wallets where third parties hold
@@ -16,7 +16,7 @@ function Wallets() {
         step to doing anything in DeFi.
       </p>
       <hr />
-      <p className="wallet-text">
+      <p className="item-text">
         Wallets vary in type and in the level of security provided. Below are
         some options for Ethereum wallets.
       </p>
@@ -24,7 +24,7 @@ function Wallets() {
       <Collapsible className="collapsible-text" label="Ethereum Wallets">
         <div className="container">
           <h2 className="learn-heading">MetaMask</h2>
-          <p className="wallet-text">
+          <p className="item-text">
             One of the most popular wallets is MetaMask. MetaMask is
             non-custodial, and serves as both a wallet for Ethereum and ERC20
             tokens, as well as an interaction bridge between protocols in the

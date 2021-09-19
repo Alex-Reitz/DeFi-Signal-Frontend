@@ -3,24 +3,19 @@ import Collapsible from "./Collapsible";
 
 function Derivatives() {
   return (
-    <Collapsible label="Derivatives">
-      <div>
-        <p>
-          Derivatives are contracts whose value is derived from another
-          underlying asset. There are a variety of DeFi deriviative protocols
-          and the main two are Synthetix and Opyn.
-        </p>
-        <p>
-          Synthetix serves as a protocol for synthetic assets and it's built on
-          Ethereum.
-        </p>
-        <p>
-          Opyn uses options to protect against smart contract failures and
-          financial or admin risks. Users can buy Put or Call options on assets
-          at a specific strike price within a particular period of time.
-        </p>
-      </div>
-    </Collapsible>
+    <div className="item-container">
+      <h1 className="learn-heading">Derivatives</h1>
+      <p className="item-text">Derivative Description</p>
+      <hr />
+      <p className="item-text">Derivative options below.</p>
+
+      <Collapsible className="collapsible-text" label="Ethereum Wallets">
+        <div className="container">
+          <h2 className="learn-heading">NA</h2>
+          <p className="item-text">Derivatives</p>
+        </div>
+      </Collapsible>
+    </div>
   );
 }
 

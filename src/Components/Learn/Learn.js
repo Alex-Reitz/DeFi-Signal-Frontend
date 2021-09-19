@@ -36,28 +36,28 @@ function Learn() {
           is recommended. Nothing seen here on DeFi Signal is financial advice.
         </p>
       </section>
-      <section className="wallet-section">
+      <section className="item-section">
         <Wallets />
       </section>
-      <section className="derivatives-section">
+      <section className="item-section">
         <Derivatives />
       </section>
-      <section className="dexes-section">
+      <section className="item-section">
         <Dexes />
       </section>
-      <section className="governance-section">
+      <section className="item-section">
         <Governance />
       </section>
-      <section className="insurance-section">
+      <section className="item-section">
         <Insurance />
       </section>
-      <section className="lending-borrowing-section">
+      <section className="item-section">
         <LendingBorrowing />
       </section>
-      <section className="lottery-section">
+      <section className="item-section">
         <Lottery />
       </section>
-      <section className="stablecoins-section">
+      <section className="item-section">
         <StableCoins />
       </section>
     </div>
