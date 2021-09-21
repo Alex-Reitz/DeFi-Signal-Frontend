@@ -1,8 +1,6 @@
 import React from "react";
-import Governance from "./Governance";
 import Insurance from "./Insurance";
 import LendingBorrowing from "./LendingBorrowing";
-import Lottery from "./Lottery";
 import StableCoins from "./StableCoins";
 import Wallets from "./Wallets";
 import Derivatives from "./Derivatives";
@@ -46,16 +44,10 @@ function Learn() {
         <Dexes />
       </section>
       <section className="item-section">
-        <Governance />
-      </section>
-      <section className="item-section">
         <Insurance />
       </section>
       <section className="item-section">
         <LendingBorrowing />
-      </section>
-      <section className="item-section">
-        <Lottery />
       </section>
       <section className="item-section">
         <StableCoins />
