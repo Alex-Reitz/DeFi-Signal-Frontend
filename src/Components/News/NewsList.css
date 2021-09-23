@@ -1,6 +1,5 @@
 .news-container {
   display: grid;
-
   background-color: rgb(33, 36, 40);
 }
 .news-heading {
@@ -8,10 +7,11 @@
   justify-content: center;
   font-size: 1.5rem;
   padding: 8px;
-  color: #fff;
+  color: rgb(241, 220, 220);
   margin: 5px;
 }
 .outer-article-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem;
 }

@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 .dropdown-menu li:hover {
-  background: #0000cd;
+  background: #5858f8;
 }
 .dropdown-menu.clicked {
   display: none;
