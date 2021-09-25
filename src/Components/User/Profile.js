@@ -4,6 +4,7 @@ import "./Profile.css";
 
 function UserProfile() {
   const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
   if (!currentUser) {
     return (
       <div className="profile-blank">
@@ -13,17 +14,24 @@ function UserProfile() {
   } else {
     return (
       <div className="profile-container">
-        <div className="profile-info">
-          <h4 className="profile-header">Here is your profile information</h4>
-          <p className="profile-info">Your username: {currentUser.username}</p>
-          <p className="profile-info">
-            Your first name: {currentUser.firstName}
+        <div className="profile-data">
+          <h4 className="profile-header">Your Information</h4>
+          <p className="user-data">
+            <strong>Username: </strong>
+            <span className="user-data-info">{currentUser.username}</span>
           </p>
-          <p className="profile-info">Your last name: {currentUser.lastName}</p>
-        </div>
-        <div className="fav-notes">
-          <p className="profile-info">Your favorites: </p>
-          <p className="profile-info">Your Notes: </p>
+          <p className="user-data">
+            <strong>Email: </strong>
+            <span className="user-data-info">{currentUser.email}</span>
+          </p>
+          <p className="user-data">
+            <strong> First name: </strong>
+            <span className="user-data-info">{currentUser.firstName}</span>
+          </p>
+          <p className="user-data">
+            <strong> Last name: </strong>
+            <span className="user-data-info">{currentUser.lastName}</span>
+          </p>
         </div>
       </div>
     );

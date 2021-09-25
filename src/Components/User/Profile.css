@@ -1,13 +1,21 @@
 .profile-container {
   height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   color: rgb(241, 220, 220);
   background-color: rgb(33, 36, 40);
+  justify-content: center;
 }
 
-.profile-info {
-  margin: 1rem;
+.profile-header {
+  margin: 0.5rem;
+  font-size: 2rem;
+}
+
+.user-data {
+  font-size: 1rem;
+}
+
+.profile-data {
+  margin: 3rem;
 }

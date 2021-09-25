@@ -6,7 +6,6 @@ import Signup from "./Auth/Signup";
 import Logout from "./Auth/Logout";
 import NewsList from "./News/NewsList";
 import Protocols from "./Protocols/Protocols";
-import Marketdata from "./MarketData/Marketdata";
 import Learn from "./Learn/Learn";
 import UserProfile from "./User/Profile";
 
@@ -31,9 +30,6 @@ function Routes({ signup, login, logout }) {
         </Route>
         <Route exact path="/protocols">
           <Protocols />
-        </Route>
-        <Route exact path="/marketdata">
-          <Marketdata />
         </Route>
         <Route exact path="/learn">
           <Learn />

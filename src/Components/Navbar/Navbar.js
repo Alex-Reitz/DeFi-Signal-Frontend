@@ -69,7 +69,7 @@ function Navbar() {
             >
               <NavLink
                 exact
-                to="marketData"
+                to="protocols"
                 onClick={closeMobileMenu}
                 className="nav-links"
               >
