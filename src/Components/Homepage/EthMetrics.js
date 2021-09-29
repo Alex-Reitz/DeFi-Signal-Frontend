@@ -135,7 +135,7 @@ function EthMetrics() {
         </div>
         <div className="eth-data">
           <span>Ethereum Age in Days:</span>
-          <span>${ethData.misc_data.asset_age_days}</span>
+          <span>{ethData.misc_data.asset_age_days}</span>
         </div>
       </div>
     </>

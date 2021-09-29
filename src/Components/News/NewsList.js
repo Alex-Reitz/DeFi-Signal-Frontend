@@ -22,7 +22,7 @@ function NewsList() {
 
   return (
     <div className="news-container">
-      <h3 className="news-heading">Latest Crypto News from Messari</h3>
+      <h3 className="news-heading">Latest News from Messari</h3>
       <div className="outer-article-container">
         {newsArticles.map((article) => (
           <Article key={article.id} info={article} />

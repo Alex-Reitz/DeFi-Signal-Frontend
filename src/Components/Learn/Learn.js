@@ -33,23 +33,43 @@ function Learn() {
           . Learning about Ethereum isn't required to learn about Defi, but it
           is recommended. Nothing seen here on DeFi Signal is financial advice.
         </p>
+        <div className="links">
+          <a className="page-link" href="#wallets">
+            Wallets
+          </a>
+          <a className="page-link" href="#derivatives">
+            Derivatives
+          </a>
+          <a className="page-link" href="#DEX">
+            Dexes
+          </a>
+          <a className="page-link" href="#insurance">
+            Insurance
+          </a>
+          <a className="page-link" href="#lendingandborrowing">
+            Lending & Borrowing
+          </a>
+          <a className="page-link" href="#stablecoins">
+            Stable Coins
+          </a>
+        </div>
       </section>
-      <section className="item-section">
+      <section id="wallets" className="item-section">
         <Wallets />
       </section>
-      <section className="item-section">
+      <section id="derivatives" className="item-section">
         <Derivatives />
       </section>
-      <section className="item-section">
+      <section id="DEX" className="item-section">
         <Dexes />
       </section>
-      <section className="item-section">
+      <section id="insurance" className="item-section">
         <Insurance />
       </section>
-      <section className="item-section">
+      <section id="lendingandborrowing" className="item-section">
         <LendingBorrowing />
       </section>
-      <section className="item-section">
+      <section id="stablecoins" className="item-section">
         <StableCoins />
       </section>
     </div>
