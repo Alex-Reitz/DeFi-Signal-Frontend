@@ -1,6 +1,6 @@
 
 <div align='center'>
-  <h1>DEFI Signal </h1>
+  <h1>DΞFI Signal</h1>
 </div>
 
 <div align="center">
