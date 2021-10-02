@@ -60,6 +60,9 @@ function TotalTvl() {
       y: {
         ticks: {
           color: "white",
+          callback: function (value) {
+            return "$" + value.toLocaleString();
+          },
         },
         grid: {
           display: false,

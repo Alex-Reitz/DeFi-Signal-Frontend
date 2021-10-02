@@ -60,6 +60,9 @@ function BinanceTvl() {
       y: {
         ticks: {
           color: "white",
+          callback: function (value) {
+            return "$" + value.toLocaleString();
+          },
         },
         grid: {
           display: false,
