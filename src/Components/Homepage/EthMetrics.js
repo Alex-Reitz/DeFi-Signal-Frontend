@@ -89,9 +89,7 @@ function EthMetrics() {
         </div>
         <div className="eth-data">
           <span>Average Fee USD:</span>
-          <span>
-            $ {ethData.on_chain_data.average_fee_usd.toLocaleString()}
-          </span>
+          <span>${ethData.on_chain_data.average_fee_usd.toLocaleString()}</span>
         </div>
         <div className="eth-data">
           <span>Median Fee USD:</span>
