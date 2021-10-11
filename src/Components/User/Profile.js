@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../Auth/UserContext";
 import "./Profile.css";
+import Catch from "../Auth/Catch";
 
 function UserProfile() {
   const { currentUser } = useContext(UserContext);
@@ -8,7 +9,7 @@ function UserProfile() {
   if (!currentUser) {
     return (
       <div className="profile-blank">
-        <h2>Please login</h2>
+        <Catch />
       </div>
     );
   } else {

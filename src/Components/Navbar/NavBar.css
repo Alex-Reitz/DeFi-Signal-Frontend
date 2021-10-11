@@ -93,7 +93,7 @@
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   .nav-menu.active {

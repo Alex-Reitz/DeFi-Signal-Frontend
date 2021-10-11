@@ -22,7 +22,7 @@
   flex-direction: column;
   margin: 5px;
   padding: 5px;
-  border: 1px solid rgb(241, 220, 220);
+  border-bottom: 1px solid rgb(241, 220, 220);
   border-radius: 10px;
   color: rgb(241, 220, 220);
 }
