@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://defisignal-backend.herokuapp.com/";
+const BASE_URL = "https://defisignal-backend.herokuapp.com";
 
 class DeFiSignalApi {
   static token;
