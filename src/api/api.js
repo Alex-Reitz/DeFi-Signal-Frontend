@@ -25,7 +25,6 @@ class DeFiSignalApi {
   //Signup/Register endpoint
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    console.log(data);
     return res;
   }
   //get current User
