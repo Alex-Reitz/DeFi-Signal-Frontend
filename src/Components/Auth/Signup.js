@@ -111,7 +111,7 @@ function Signup({ signup }) {
         {formErrors.length ? <Alert messages={formErrors} /> : null}
         <div className="signup-button">
           {" "}
-          <Button>Login</Button>{" "}
+          <Button>Signup</Button>{" "}
         </div>
       </form>
     </div>
