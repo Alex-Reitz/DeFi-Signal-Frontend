@@ -8,6 +8,9 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import DeFiSignalApi from "../api/api";
 import NavBar from "../Components/Navbar/Navbar";
 import Loading from "./Loading/Loading";
+//Chakra
+import { ChakraProvider } from "@chakra-ui/react";
+import customTheme from "./theme.js";
 
 export const TOKEN_ID = "DeFi-signal-token";
 
@@ -65,14 +68,16 @@ function App() {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <BrowserRouter>
-      <UserContext.Provider value={{ currentUser }}>
-        <div className="App">
-          <NavBar />
-          <Routes signup={signup} login={login} logout={logout} />
-        </div>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <ChakraProvider theme={customTheme}>
+      <BrowserRouter>
+        <UserContext.Provider value={{ currentUser }}>
+          <div className="App">
+            <NavBar />
+            <Routes signup={signup} login={login} logout={logout} />
+          </div>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
