@@ -86,7 +86,6 @@ class DeFiSignalApi {
   //update user information
   static async update(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
-    console.log(res);
     return res;
   }
 }

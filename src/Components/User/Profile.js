@@ -1,45 +1,3 @@
-/* import React, { useContext } from "react";
-import UserContext from "../Auth/UserContext";
-import "./Profile.css";
-import Catch from "../Auth/Catch";
-
-function UserProfile() {
-  const { currentUser } = useContext(UserContext);
-  if (!currentUser) {
-    return (
-      <div className="profile-blank">
-        <Catch />
-      </div>
-    );
-  } else {
-    return (
-      <div className="profile-container">
-        <div className="profile-data">
-          <h4 className="profile-header">Your Information</h4>
-          <p className="user-data">
-            <strong>Username: </strong>
-            <span className="user-data-info">{currentUser.username}</span>
-          </p>
-          <p className="user-data">
-            <strong>Email: </strong>
-            <span className="user-data-info">{currentUser.email}</span>
-          </p>
-          <p className="user-data">
-            <strong> First name: </strong>
-            <span className="user-data-info">{currentUser.firstName}</span>
-          </p>
-          <p className="user-data">
-            <strong> Last name: </strong>
-            <span className="user-data-info">{currentUser.lastName}</span>
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default UserProfile; */
-
 import React, { useContext, useState } from "react";
 import UserContext from "../Auth/UserContext";
 import {
@@ -62,12 +20,13 @@ import Catch from "../Auth/Catch";
 import DeFiSignalApi from "../../api/api";
 
 const About = () => {
-  const { currentUser } = useContext(UserContext);
-
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const [formErrors, setFormErrors] = useState([]);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    password: "",
   });
   //updates state based on change in form
   const handleChange = (evt) => {
@@ -77,7 +36,7 @@ const About = () => {
       [name]: value,
     }));
   };
-  //Sends the patch request out to backend
+  /* //Sends the patch request out to backend
   const gatherInput = (evt) => {
     evt.preventDefault();
     update(currentUser.username, { ...formData });
@@ -85,16 +44,46 @@ const About = () => {
       firstName: "",
       lastName: "",
       email: "",
+      password: "",
     });
-  };
+  }; */
   //sends update to backend
-  const update = (username, data) => {
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+
+    let profileData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    let username = formData.username;
+    let updatedUser;
+
+    try {
+      updatedUser = await DeFiSignalApi.update(username, profileData);
+    } catch (errors) {
+      debugger;
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormData((f) => ({ ...f, password: "" }));
+    setFormErrors([]);
+
+    // trigger reloading of user information throughout the site
+    setCurrentUser(updatedUser);
+  }
+
+  /*  const update = (username, data) => {
     async function updateUser(username, data) {
       const res = await DeFiSignalApi.update(username, data);
+      console.log(res);
       return res;
     }
     updateUser(username, data);
-  };
+  }; */
 
   if (!currentUser) {
     return (
@@ -148,8 +137,23 @@ const About = () => {
                 </FormHelperText>
               </FormControl>
             </Text>
+            <Text align="center" color="black" as="cite" fontSize="1.3rem">
+              Password
+              <FormControl id="password">
+                <Input
+                  type="password"
+                  placeholder="Your Password"
+                  onChange={handleChange}
+                  value={formData.password}
+                  name="password"
+                />
+                <FormHelperText align="center">
+                  Enter your password to confirm change
+                </FormHelperText>
+              </FormControl>
+            </Text>
             <br />
-            <Button colorScheme="blue" onClick={gatherInput}>
+            <Button colorScheme="blue" onClick={handleSubmit}>
               Update Info
             </Button>
           </VStack>
