@@ -39,11 +39,11 @@ function UserProfile() {
 }
 
 export default UserProfile; */
-import React, { useContext } from "react";
+
+import React, { useContext, useState } from "react";
 import UserContext from "../Auth/UserContext";
 import {
   FormControl,
-  FormLabel,
   FormErrorMessage,
   FormHelperText,
   Input,
@@ -59,9 +59,43 @@ import {
 import BaseContainer from "../Layouts/BaseContainer";
 import Section from "../Layouts/Section";
 import Catch from "../Auth/Catch";
+import DeFiSignalApi from "../../api/api";
 
 const About = () => {
   const { currentUser } = useContext(UserContext);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  //updates state based on change in form
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData((formData) => ({
+      ...formData,
+      [name]: value,
+    }));
+  };
+  //Sends the patch request out to backend
+  const gatherInput = (evt) => {
+    evt.preventDefault();
+    update(currentUser.username, { ...formData });
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+    });
+  };
+  //sends update to backend
+  const update = (username, data) => {
+    async function updateUser(username, data) {
+      const res = await DeFiSignalApi.update(username, data);
+      return res;
+    }
+    updateUser(username, data);
+  };
+
   if (!currentUser) {
     return (
       <div className="profile-blank">
@@ -77,29 +111,47 @@ const About = () => {
               Hey {currentUser.username}!
             </Heading>
             <Center color="gray.700">Here is your profile information</Center>{" "}
-            <Text color="black" as="cite" fontSize="1.3rem">
+            <Text align="center" color="black" as="cite" fontSize="1.3rem">
               First Name — {currentUser.firstName}
               <FormControl id="first-name">
-                <FormLabel>Update</FormLabel>
-                <Input placeholder="First name" />
+                <Input
+                  placeholder="Update First Name"
+                  onChange={handleChange}
+                  value={formData.firstName}
+                  name="firstName"
+                />
               </FormControl>
             </Text>
-            <Text color="black" as="cite" fontSize="1.3rem">
+            <Text align="center" color="black" as="cite" fontSize="1.3rem">
               Last Name — {currentUser.lastName}
+              <FormControl id="last-name">
+                <Input
+                  placeholder="Update Last Name"
+                  onChange={handleChange}
+                  value={formData.lastName}
+                  name="lastName"
+                />{" "}
+              </FormControl>
             </Text>
-            <Text color="black" as="cite" fontSize="1.3rem">
-              Username — {currentUser.username}
-            </Text>
-            <Text color="black" as="cite" fontSize="1.3rem">
+            <Text align="center" color="black" as="cite" fontSize="1.3rem">
               Email — {currentUser.email}
               <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
-                <Input type="email" />
-                <FormHelperText>We'll never share your email.</FormHelperText>
+                <Input
+                  type="email"
+                  placeholder="Update Email"
+                  onChange={handleChange}
+                  value={formData.email}
+                  name="email"
+                />
+                <FormHelperText align="center">
+                  We'll never share your email.
+                </FormHelperText>
               </FormControl>
             </Text>
             <br />
-            <Button colorScheme="blue">Update Info</Button>
+            <Button colorScheme="blue" onClick={gatherInput}>
+              Update Info
+            </Button>
           </VStack>
         </VStack>
         <Section bg="#fff" py={{ base: "6rem", md: "7rem", lg: "8rem" }}>

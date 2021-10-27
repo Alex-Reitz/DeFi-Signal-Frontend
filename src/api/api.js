@@ -83,6 +83,12 @@ class DeFiSignalApi {
     let res = await this.request(`data/polygonchart`);
     return res.charts;
   }
+  //update user information
+  static async update(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    console.log(res);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;
