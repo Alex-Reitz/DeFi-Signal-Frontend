@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../Auth/UserContext";
+import Alert from "../Loading/Alert";
 import {
   FormControl,
   FormErrorMessage,
@@ -21,13 +22,15 @@ import DeFiSignalApi from "../../api/api";
 
 const About = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const [formErrors, setFormErrors] = useState([]);
+
   const [formData, setFormData] = useState({
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     email: currentUser.email,
     password: "",
   });
+  const [formErrors, setFormErrors] = useState([]);
+  const [saveConfirmed, setSaveConfirmed] = useState(false);
   //updates state based on change in form
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -35,6 +38,7 @@ const About = () => {
       ...formData,
       [name]: value,
     }));
+    setFormErrors([]);
   };
   /* //Sends the patch request out to backend
   const gatherInput = (evt) => {
@@ -58,22 +62,22 @@ const About = () => {
       password: formData.password,
     };
 
-    let username = formData.username;
+    let username = currentUser.username;
     let updatedUser;
-
+    console.log(currentUser);
     try {
       updatedUser = await DeFiSignalApi.update(username, profileData);
+      console.log(updatedUser.user);
     } catch (errors) {
-      debugger;
       setFormErrors(errors);
       return;
     }
 
     setFormData((f) => ({ ...f, password: "" }));
     setFormErrors([]);
+    setSaveConfirmed(true);
 
-    // trigger reloading of user information throughout the site
-    setCurrentUser(updatedUser);
+    setCurrentUser(updatedUser.user);
   }
 
   /*  const update = (username, data) => {
@@ -153,11 +157,18 @@ const About = () => {
               </FormControl>
             </Text>
             <br />
+            {formErrors.length ? (
+              <Alert type="danger" messages={formErrors} />
+            ) : null}
+            {saveConfirmed ? (
+              <Alert type="success" messages={["Updated Successfully"]} />
+            ) : null}
             <Button colorScheme="blue" onClick={handleSubmit}>
               Update Info
             </Button>
           </VStack>
         </VStack>
+
         <Section bg="#fff" py={{ base: "6rem", md: "7rem", lg: "8rem" }}>
           <Flex
             w="100%"

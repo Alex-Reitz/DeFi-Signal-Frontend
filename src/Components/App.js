@@ -8,7 +8,6 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import DeFiSignalApi from "../api/api";
 import NavBar from "../Components/Navbar/Navbar";
 import Loading from "./Loading/Loading";
-//Chakra
 import { ChakraProvider } from "@chakra-ui/react";
 import customTheme from "./theme.js";
 
@@ -70,7 +69,7 @@ function App() {
   return (
     <ChakraProvider theme={customTheme}>
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
           <div className="App">
             <NavBar />
             <Routes signup={signup} login={login} logout={logout} />
