@@ -1,6 +1,14 @@
+import {
+  FormControl,
+  Input,
+  Box,
+  Flex,
+  Heading,
+  Button,
+  FormLabel,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "../Button";
 import "./Login.css";
 import Alert from "../Alert/Alert";
 
@@ -29,47 +37,54 @@ function Login({ login }) {
       setFormErrors(result.error);
     }
   }
-
   return (
-    <div className="login-form">
-      <h1 className="login-heading">Welcome Back</h1>
-      <form onSubmit={gatherInput}>
-        <div className="login-div">
-          <label htmlFor="firstName">
-            <h6 className="login-input-label"></h6>
-          </label>
-          <input
-            className="login-input"
-            autoFocus
-            onChange={handleChange}
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            id="username"
-          />
-        </div>
-        <div className="login-div">
-          <label htmlFor="firstName">
-            <h6 className="login-input-label"></h6>
-          </label>
-          <input
-            className="login-input"
-            onChange={handleChange}
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            id="password"
-          />
-        </div>
-        {formErrors.length ? <Alert messages={formErrors} /> : null}
-        <div className="login-button">
-          {" "}
-          <Button>Login</Button>{" "}
-        </div>
-      </form>
-    </div>
+    <Flex minHeight="100vh" width="full" align="center" justifyContent="center">
+      <Box
+        borderWidth={1}
+        px={4}
+        width="full"
+        maxWidth="500px"
+        borderRadius={4}
+        textAlign="center"
+        boxShadow="lg"
+      >
+        <Box p={4}>
+          <Box textAlign="center">
+            <Heading>Login</Heading>
+          </Box>
+          <Box my={8} textAlign="left">
+            <form>
+              <FormControl>
+                <FormLabel>Username</FormLabel>
+                <Input
+                  placeholder="Enter your Username"
+                  onChange={handleChange}
+                  value={formData.username}
+                  name="username"
+                />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  placeholder="Enter your password"
+                  onChange={handleChange}
+                  value={formData.password}
+                  name="password"
+                />
+              </FormControl>
+              <Box align="center" mt={5}>
+                {formErrors.length ? <Alert messages={formErrors} /> : null}
+                <Button align="center" colorScheme="blue" onClick={gatherInput}>
+                  Login
+                </Button>
+              </Box>
+            </form>
+          </Box>
+        </Box>
+      </Box>
+    </Flex>
   );
 }
 

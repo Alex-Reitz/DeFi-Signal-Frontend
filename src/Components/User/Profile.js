@@ -3,7 +3,6 @@ import UserContext from "../Auth/UserContext";
 import Alert from "../Loading/Alert";
 import {
   FormControl,
-  FormErrorMessage,
   FormHelperText,
   Input,
   Box,
@@ -12,7 +11,6 @@ import {
   Center,
   Heading,
   Text,
-  Link,
   Button,
 } from "@chakra-ui/react";
 import BaseContainer from "../Layouts/BaseContainer";
@@ -24,71 +22,12 @@ const About = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
-    firstName: currentUser.firstName,
-    lastName: currentUser.lastName,
-    email: currentUser.email,
-    password: "",
+    firstName: currentUser ? currentUser.firstName : null,
+    lastName: currentUser ? currentUser.lastName : null,
+    email: currentUser ? currentUser.email : null,
   });
   const [formErrors, setFormErrors] = useState([]);
   const [saveConfirmed, setSaveConfirmed] = useState(false);
-  //updates state based on change in form
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setFormData((formData) => ({
-      ...formData,
-      [name]: value,
-    }));
-    setFormErrors([]);
-  };
-  /* //Sends the patch request out to backend
-  const gatherInput = (evt) => {
-    evt.preventDefault();
-    update(currentUser.username, { ...formData });
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
-  }; */
-  //sends update to backend
-  async function handleSubmit(evt) {
-    evt.preventDefault();
-
-    let profileData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      password: formData.password,
-    };
-
-    let username = currentUser.username;
-    let updatedUser;
-    console.log(currentUser);
-    try {
-      updatedUser = await DeFiSignalApi.update(username, profileData);
-      console.log(updatedUser.user);
-    } catch (errors) {
-      setFormErrors(errors);
-      return;
-    }
-
-    setFormData((f) => ({ ...f, password: "" }));
-    setFormErrors([]);
-    setSaveConfirmed(true);
-
-    setCurrentUser(updatedUser.user);
-  }
-
-  /*  const update = (username, data) => {
-    async function updateUser(username, data) {
-      const res = await DeFiSignalApi.update(username, data);
-      console.log(res);
-      return res;
-    }
-    updateUser(username, data);
-  }; */
-
   if (!currentUser) {
     return (
       <div className="profile-blank">
@@ -96,6 +35,43 @@ const About = () => {
       </div>
     );
   } else {
+    //updates state based on change in form
+    const handleChange = (evt) => {
+      const { name, value } = evt.target;
+      setFormData((formData) => ({
+        ...formData,
+        [name]: value,
+      }));
+      setFormErrors([]);
+    };
+
+    //sends update to backend
+    async function handleSubmit(evt) {
+      evt.preventDefault();
+
+      let profileData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+      };
+
+      let username = currentUser.username;
+      let updatedUser;
+      console.log(currentUser);
+      try {
+        updatedUser = await DeFiSignalApi.update(username, profileData);
+        console.log(updatedUser.user);
+      } catch (errors) {
+        setFormErrors(errors);
+        return;
+      }
+
+      setFormData((f) => ({ ...f, password: "" }));
+      setFormErrors([]);
+      setSaveConfirmed(true);
+
+      setCurrentUser(updatedUser.user);
+    }
     return (
       <BaseContainer px="20px">
         <VStack spacing={8} py="2rem" padding="4">
@@ -138,21 +114,6 @@ const About = () => {
                 />
                 <FormHelperText align="center">
                   We'll never share your email.
-                </FormHelperText>
-              </FormControl>
-            </Text>
-            <Text align="center" color="black" as="cite" fontSize="1.3rem">
-              Password
-              <FormControl id="password">
-                <Input
-                  type="password"
-                  placeholder="Your Password"
-                  onChange={handleChange}
-                  value={formData.password}
-                  name="password"
-                />
-                <FormHelperText align="center">
-                  Enter your password to confirm change
                 </FormHelperText>
               </FormControl>
             </Text>
