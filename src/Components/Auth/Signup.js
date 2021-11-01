@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import Alert from "../Alert/Alert";
 
 function Login({ signup }) {

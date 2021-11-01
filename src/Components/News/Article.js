@@ -33,9 +33,7 @@ function Article({ info }) {
             color={useColorModeValue("gray.700", "white")}
             fontSize={"2xl"}
             fontFamily={"body"}
-          >
-            what's here?
-          </Heading>
+          ></Heading>
           <Text color={"gray.500"}>{info.content.slice(0, 250)}...</Text>
         </Stack>
         <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
