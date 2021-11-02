@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
-import DeFiSignalApi from "../../api/api";
-import Loading from "../Loading/Loading";
 
-function TotalTvl() {
-  const [infoLoaded, setInfoLoaded] = useState(false);
-  const [chartData, setChartData] = useState([]);
-
-  useEffect(() => {
-    async function getCharts() {
-      const res = await DeFiSignalApi.charts();
-      setChartData(res.slice(600));
-      setInfoLoaded(true);
-    }
-    setInfoLoaded(false);
-    getCharts();
-  }, []);
-
+function TotalTvl({ chartData }) {
   const data = {
     labels: chartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -92,7 +77,6 @@ function TotalTvl() {
     },
   };
 
-  if (!infoLoaded) return <Loading />;
   return (
     <div className="line-totaltvl">
       <Line data={data} options={options} />

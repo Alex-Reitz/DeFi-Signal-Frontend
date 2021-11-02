@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
-import DeFiSignalApi from "../../api/api";
-import Loading from "../Loading/Loading";
 
-function SolanaTvl() {
-  const [infoLoaded, setInfoLoaded] = useState(false);
-  const [chartData, setChartData] = useState([]);
-
-  useEffect(() => {
-    async function getEthChart() {
-      const res = await DeFiSignalApi.SolanaChart();
-      setChartData(res);
-      setInfoLoaded(true);
-    }
-    setInfoLoaded(false);
-    getEthChart();
-  }, []);
-
+function SolanaTvl({ solanaChartData }) {
   const data = {
-    labels: chartData.map(function (a) {
+    labels: solanaChartData.map(function (a) {
       var date = new Date(a.date * 1000);
       return date.toLocaleDateString();
     }),
     datasets: [
       {
-        data: chartData.map(function (a) {
+        data: solanaChartData.map(function (a) {
           return a.totalLiquidityUSD;
         }),
         fill: true,
@@ -91,8 +76,6 @@ function SolanaTvl() {
       intersect: false,
     },
   };
-
-  if (!infoLoaded) return <Loading />;
 
   return (
     <div className="line-solanatvl">

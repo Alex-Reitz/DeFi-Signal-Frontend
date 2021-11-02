@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import DeFiSignalApi from "../../api/api";
-import Loading from "../Loading/Loading";
+import React from "react";
 import EthCoin from "../../images/ethereum-1.svg";
 import {
   Box,
@@ -11,22 +9,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-function EthGas() {
-  const [gasData, setGasData] = useState([]);
-  const [infoLoaded, setInfoLoaded] = useState(false);
-
-  useEffect(() => {
-    async function getGasData() {
-      const res = await DeFiSignalApi.getGas();
-      setGasData(res);
-      setInfoLoaded(true);
-    }
-    setInfoLoaded(false);
-    getGasData();
-  }, []);
-
-  if (!infoLoaded) return <Loading />;
-
+function EthGas({ gasData }) {
   return (
     <>
       <Box

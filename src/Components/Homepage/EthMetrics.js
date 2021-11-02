@@ -1,24 +1,7 @@
-import React, { useState, useEffect } from "react";
-import DeFiSignalApi from "../../api/api";
-import Loading from "../Loading/Loading";
+import React from "react";
 import "./EthMetrics.css";
 
-function EthMetrics() {
-  const [ethData, setEthData] = useState([]);
-  const [infoLoaded, setInfoLoaded] = useState(false);
-
-  useEffect(() => {
-    async function getGasData() {
-      const res = await DeFiSignalApi.getEthMetrics();
-      setEthData(res.metrics.data);
-      setInfoLoaded(true);
-    }
-    setInfoLoaded(false);
-    getGasData();
-  }, []);
-
-  if (!infoLoaded) return <Loading />;
-
+function EthMetrics({ ethData }) {
   return (
     <>
       <h1 className="metrics-header">Ethereum Stats</h1>
