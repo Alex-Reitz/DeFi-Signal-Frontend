@@ -1,7 +1,18 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import {
+  Box,
+  Text,
+  Center,
+  Heading,
+  Flex,
+  VStack,
+  HStack,
+  Container,
+  SimpleGrid,
+} from "@chakra-ui/react";
 
-function EthTvl({ ethChartData }) {
+function EthTvl({ ethChartData, ethData }) {
   const data = {
     labels: ethChartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -13,13 +24,13 @@ function EthTvl({ ethChartData }) {
           return a.totalLiquidityUSD;
         }),
         fill: true,
-        backgroundColor: "#2e4355",
+        backgroundColor: "black",
         pointBorderColor: "#8884d8",
         pointBorderWidth: 2,
         showLine: true,
         pointRadius: 0,
         tension: 0.6,
-        borderColor: "white",
+        borderColor: "black",
       },
     ],
   };
@@ -31,8 +42,8 @@ function EthTvl({ ethChartData }) {
       title: {
         display: true,
         align: "p",
-        text: "Total Value Locked - Ethereum",
-        color: "white",
+        text: "Total Value Locked",
+        color: "black",
         font: {
           size: 20,
         },
@@ -44,7 +55,7 @@ function EthTvl({ ethChartData }) {
     scales: {
       y: {
         ticks: {
-          color: "white",
+          color: "black",
           callback: function (value) {
             return "$" + value.toLocaleString();
           },
@@ -54,12 +65,12 @@ function EthTvl({ ethChartData }) {
         },
       },
       x: {
-        borderColor: "white",
+        borderColor: "black",
         grid: {
           display: false,
         },
         ticks: {
-          color: "white",
+          color: "black",
         },
       },
     },
@@ -78,9 +89,37 @@ function EthTvl({ ethChartData }) {
   };
 
   return (
-    <div className="line-ethtvl">
+    <Container maxW="container.xl">
+      <Center>
+        <Heading color="black">Ethereum</Heading>
+      </Center>
+      <HStack>
+        <Text fontSize="sm">
+          Current Price: ${ethData.market_data.price_usd.toLocaleString()}
+        </Text>
+        <Text fontSize="sm">
+          Circulating Supply: {ethData.supply.circulating.toLocaleString()}
+        </Text>
+        <Text fontSize="sm">
+          Current Market Cap USD: $
+          {ethData.marketcap.current_marketcap_usd.toLocaleString()}
+        </Text>
+        <Text fontSize="sm">
+          Volume Past 24 Hours: $
+          {ethData.market_data.volume_last_24_hours.toLocaleString()}
+        </Text>
+        <Text fontSize="sm">
+          All Time High: ${ethData.all_time_high.price.toLocaleString()}
+        </Text>
+        <Text fontSize="sm">
+          Percent Change Past Month:{" "}
+          {ethData.roi_data.percent_change_last_1_month.toLocaleString()}%
+        </Text>
+      </HStack>
+      <VStack></VStack>
+
       <Line data={data} options={options} />
-    </div>
+    </Container>
   );
 }
 

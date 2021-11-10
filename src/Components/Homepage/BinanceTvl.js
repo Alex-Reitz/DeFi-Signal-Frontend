@@ -31,7 +31,7 @@ function BinanceTvl({ binanceChartData }) {
       title: {
         display: true,
         align: "p",
-        text: "Total Value Locked - Binance",
+        text: "Total Value Locked - BNB",
         color: "white",
         font: {
           size: 20,

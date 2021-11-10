@@ -23,7 +23,7 @@ function EthGas({ gasData }) {
       >
         <Box>
           <Center>
-            <Heading m={2} fontSize={"2xl"} fontFamily={"body"} color={"white"}>
+            <Heading m={2} fontSize={"2xl"} fontFamily={"body"} color={"black"}>
               Ethereum Gas Data
             </Heading>
           </Center>
@@ -31,10 +31,10 @@ function EthGas({ gasData }) {
         <SimpleGrid columns={5}>
           <Center>
             <Box>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 <strong>Average:</strong> {gasData.gas.average / 10} gwei
               </Text>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 {" "}
                 <strong>Fast:</strong> {gasData.gas.fast / 10} gwei
               </Text>
@@ -42,11 +42,11 @@ function EthGas({ gasData }) {
           </Center>
           <Center>
             <Box>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 {" "}
                 <strong>Fastest:</strong> {gasData.gas.fastest / 10} gwei
               </Text>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 <strong>SafeLow: </strong>
                 {gasData.gas.safeLow / 10} gwei
               </Text>
@@ -59,21 +59,21 @@ function EthGas({ gasData }) {
           </Center>
           <Center>
             <Box>
-              <Text color={"white"} fontWeight={600}>
+              <Text color={"black"} fontWeight={600}>
                 <strong>Safe Low Wait:</strong> {gasData.gas.safeLowWait}{" "}
                 seconds
               </Text>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 <strong>Average Wait:</strong> {gasData.gas.avgWait} minutes
               </Text>
             </Box>
           </Center>
           <Center>
             <Box>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 <strong>Fast Wait:</strong> {gasData.gas.fastWait} minutes
               </Text>
-              <Text color={"white"}>
+              <Text color={"black"}>
                 <strong>Fastest Wait:</strong> {gasData.gas.fastestWait} minutes
               </Text>
             </Box>

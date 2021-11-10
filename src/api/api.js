@@ -53,6 +53,21 @@ class DeFiSignalApi {
     let res = await this.request(`data/ethmetrics`);
     return res;
   }
+  //Get SOL metrics from Messari
+  static async getSolanaMetrics() {
+    let res = await this.request(`data/solanametrics`);
+    return res;
+  }
+  //Get BNB metrics from Messari
+  static async getBNBMetrics() {
+    let res = await this.request(`data/bnbmetrics`);
+    return res;
+  }
+  //Get Polygon metrics from Messari
+  static async getPolygonMetrics() {
+    let res = await this.request(`data/polygonmetrics`);
+    return res;
+  }
   //Get gas data - DeFi Pulse
   static async getGas() {
     let res = await this.request(`data/gasdata`);

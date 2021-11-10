@@ -1,8 +1,31 @@
 import React, { useState, useEffect } from "react";
+import {
+  Flex,
+  Center,
+  VStack,
+  Heading,
+  Avatar,
+  AvatarGroup,
+  Text,
+  Icon,
+  IconButton,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Divider,
+  Link,
+  Box,
+  Button,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from "@chakra-ui/react";
 import DeFiSignalApi from "../../api/api";
 import Loading from "../Loading/Loading";
 import EthGas from "./EthGas";
-import "./Home.css";
 import TotalTvl from "./TotalTvl";
 import EthTvl from "./EthTvl";
 import BinanceTvl from "./BinanceTvl";
@@ -13,6 +36,9 @@ import EthMetrics from "./EthMetrics";
 function Home() {
   const [gasData, setGasData] = useState([]);
   const [ethData, setEthData] = useState([]);
+  const [solData, setSolData] = useState([]);
+  const [polygonData, setPolygonData] = useState([]);
+  const [bnbData, setBNBData] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [ethChartData, setEthChartData] = useState([]);
   const [binanceChartData, setBinanceChartData] = useState([]);
@@ -29,6 +55,18 @@ function Home() {
     async function ethMetrics() {
       const res = await DeFiSignalApi.getEthMetrics();
       setEthData(res.metrics.data);
+    }
+    async function solMetrics() {
+      const res = await DeFiSignalApi.getSolanaMetrics();
+      setSolData(res.metrics.data);
+    }
+    async function polygonMetrics() {
+      const res = await DeFiSignalApi.getPolygonMetrics();
+      setPolygonData(res.metrics.data);
+    }
+    async function bnbMetrics() {
+      const res = await DeFiSignalApi.getBNBMetrics();
+      setBNBData(res.metrics.data);
     }
     async function getCharts() {
       const res = await DeFiSignalApi.charts();
@@ -50,9 +88,13 @@ function Home() {
       const res = await DeFiSignalApi.PolygonChart();
       setPolygonChartData(res);
     }
+
     setInfoLoaded(false);
     getGasData();
     ethMetrics();
+    solMetrics();
+    polygonMetrics();
+    bnbMetrics();
     getCharts();
     getEthChart();
     getBinanceChart();
@@ -60,31 +102,33 @@ function Home() {
     getPolygonChart();
   }, []);
   if (!infoLoaded) return <Loading />;
-
   return (
-    <div className="home-container">
-      <section>
-        <div className="initial-container">
+    <Flex w={["100%"]} p="3%" flexDir="column" overflow="auto" minH="100vh">
+      <Box>
+        <Center>
+          {" "}
           <EthGas gasData={gasData} />
-          <EthMetrics ethData={ethData} />
-        </div>
-      </section>
-      <section>
+        </Center>
+      </Box>
+      <Box>
         <TotalTvl chartData={chartData} />
-      </section>
-      <section>
-        <EthTvl ethChartData={ethChartData} />
-      </section>
-      <section>
+      </Box>
+      <Box>
+        {" "}
+        <EthTvl ethChartData={ethChartData} ethData={ethData} />
+      </Box>
+      <Box>
+        {" "}
         <BinanceTvl binanceChartData={binanceChartData} />
-      </section>
-      <section>
+      </Box>
+      <Box>
+        {" "}
         <SolanaTvl solanaChartData={solanaChartData} />
-      </section>
-      <section>
+      </Box>
+      <Box>
         <PolygonTvl polygonChartData={polygonChartData} />
-      </section>
-    </div>
+      </Box>
+    </Flex>
   );
 }
 
