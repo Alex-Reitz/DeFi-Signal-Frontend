@@ -68,17 +68,17 @@ function Home() {
       const res = await DeFiSignalApi.getBNBMetrics();
       setBNBData(res.metrics.data);
     }
-    async function getCharts() {
+    async function getTVLChart() {
       const res = await DeFiSignalApi.charts();
-      setChartData(res.slice(600));
+      setChartData(res.slice(735));
     }
     async function getEthChart() {
       const res = await DeFiSignalApi.EthChart();
-      setEthChartData(res.slice(600));
+      setEthChartData(res.slice(735));
     }
     async function getBinanceChart() {
       const res = await DeFiSignalApi.BinanceChart();
-      setBinanceChartData(res);
+      setBinanceChartData(res.slice(735));
     }
     async function getSolanaChart() {
       const res = await DeFiSignalApi.SolanaChart();
@@ -86,7 +86,7 @@ function Home() {
     }
     async function getPolygonChart() {
       const res = await DeFiSignalApi.PolygonChart();
-      setPolygonChartData(res);
+      setPolygonChartData(res.slice(735));
     }
 
     setInfoLoaded(false);
@@ -95,7 +95,7 @@ function Home() {
     solMetrics();
     polygonMetrics();
     bnbMetrics();
-    getCharts();
+    getTVLChart();
     getEthChart();
     getBinanceChart();
     getSolanaChart();

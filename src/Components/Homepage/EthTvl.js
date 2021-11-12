@@ -10,6 +10,7 @@ import {
   HStack,
   Container,
   SimpleGrid,
+  Grid,
 } from "@chakra-ui/react";
 
 function EthTvl({ ethChartData, ethData }) {
@@ -24,18 +25,16 @@ function EthTvl({ ethChartData, ethData }) {
           return a.totalLiquidityUSD;
         }),
         fill: true,
-        backgroundColor: "black",
-        pointBorderColor: "#8884d8",
-        pointBorderWidth: 2,
-        showLine: true,
+        backgroundColor: "#000521",
+        pointBorderWidth: 1,
         pointRadius: 0,
-        tension: 0.6,
-        borderColor: "black",
+        tension: 0.4,
       },
     ],
   };
 
   const options = {
+    responsive: true,
     maintainAspectRatio: true,
     layout: { padding: { bottom: 50 } },
     plugins: {
@@ -54,36 +53,26 @@ function EthTvl({ ethChartData, ethData }) {
     },
     scales: {
       y: {
-        ticks: {
-          color: "black",
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
-        },
         grid: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
           display: false,
         },
       },
       x: {
-        borderColor: "black",
         grid: {
           display: false,
         },
         ticks: {
-          color: "black",
+          display: false,
         },
       },
     },
-    tooltips: {
-      mode: "index",
-      intersect: false,
-    },
-    hover: {
-      mode: "nearest",
-      intersect: true,
-    },
     interaction: {
       mode: "index",
+      padding: 10,
       intersect: false,
     },
   };
@@ -93,32 +82,35 @@ function EthTvl({ ethChartData, ethData }) {
       <Center>
         <Heading color="black">Ethereum</Heading>
       </Center>
-      <HStack>
-        <Text fontSize="sm">
-          Current Price: ${ethData.market_data.price_usd.toLocaleString()}
-        </Text>
-        <Text fontSize="sm">
-          Circulating Supply: {ethData.supply.circulating.toLocaleString()}
-        </Text>
-        <Text fontSize="sm">
-          Current Market Cap USD: $
-          {ethData.marketcap.current_marketcap_usd.toLocaleString()}
-        </Text>
-        <Text fontSize="sm">
-          Volume Past 24 Hours: $
-          {ethData.market_data.volume_last_24_hours.toLocaleString()}
-        </Text>
-        <Text fontSize="sm">
-          All Time High: ${ethData.all_time_high.price.toLocaleString()}
-        </Text>
-        <Text fontSize="sm">
-          Percent Change Past Month:{" "}
-          {ethData.roi_data.percent_change_last_1_month.toLocaleString()}%
-        </Text>
-      </HStack>
-      <VStack></VStack>
-
-      <Line data={data} options={options} />
+      <Center>
+        <HStack spacing="3rem">
+          <Text fontSize="sm">
+            <strong> Current Price: </strong>$
+            {ethData.market_data.price_usd.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Circulating Supply:</strong>{" "}
+            {ethData.supply.circulating.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Current Market Cap USD:</strong> $
+            {ethData.marketcap.current_marketcap_usd.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Volume Past 24 Hours:</strong> $
+            {ethData.market_data.volume_last_24_hours.toLocaleString()}
+          </Text>
+        </HStack>
+      </Center>
+      <Container
+        maxW="container.xl"
+        centerContent
+        borderRadius={6}
+        border="2px"
+        borderColor="blue.900"
+      >
+        <Line data={data} options={options} />
+      </Container>
     </Container>
   );
 }
