@@ -1,17 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import {
-  Box,
-  Text,
-  Center,
-  Heading,
-  Flex,
-  VStack,
-  HStack,
-  Container,
-  SimpleGrid,
-  Grid,
-} from "@chakra-ui/react";
+import { Text, Center, Heading, HStack, Container } from "@chakra-ui/react";
 
 function EthTvl({ ethChartData, ethData }) {
   const data = {
@@ -78,7 +67,7 @@ function EthTvl({ ethChartData, ethData }) {
   };
 
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.xl" mt={10}>
       <Center>
         <Heading color="black">Ethereum</Heading>
       </Center>

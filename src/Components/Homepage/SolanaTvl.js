@@ -1,7 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import { Text, Center, Heading, HStack, Container } from "@chakra-ui/react";
 
-function SolanaTvl({ solanaChartData }) {
+function SolanaTvl({ solanaChartData, solData }) {
   const data = {
     labels: solanaChartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -13,26 +14,24 @@ function SolanaTvl({ solanaChartData }) {
           return a.totalLiquidityUSD;
         }),
         fill: true,
-        backgroundColor: "#2e4355",
-        pointBorderColor: "#8884d8",
-        pointBorderWidth: 2,
-        showLine: true,
+        backgroundColor: "#000521",
+        pointBorderWidth: 1,
         pointRadius: 0,
-        tension: 0.6,
-        borderColor: "white",
+        tension: 0.4,
       },
     ],
   };
 
   const options = {
+    responsive: true,
     maintainAspectRatio: true,
     layout: { padding: { bottom: 50 } },
     plugins: {
       title: {
         display: true,
         align: "p",
-        text: "Total Value Locked - Solana",
-        color: "white",
+        text: "Total Value Locked",
+        color: "black",
         font: {
           size: 20,
         },
@@ -43,44 +42,65 @@ function SolanaTvl({ solanaChartData }) {
     },
     scales: {
       y: {
-        ticks: {
-          color: "white",
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
-        },
         grid: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
           display: false,
         },
       },
       x: {
-        borderColor: "white",
         grid: {
           display: false,
         },
         ticks: {
-          color: "white",
+          display: false,
         },
       },
     },
-    tooltips: {
-      mode: "index",
-      intersect: false,
-    },
-    hover: {
-      mode: "nearest",
-      intersect: true,
-    },
     interaction: {
       mode: "index",
+      padding: 10,
       intersect: false,
     },
   };
 
   return (
-    <div className="line-solanatvl">
-      <Line data={data} options={options} />
-    </div>
+    <Container maxW="container.xl" mt={10}>
+      <Center>
+        <Heading color="black">Solana</Heading>
+      </Center>
+      <Center>
+        <HStack spacing="3rem">
+          <Text fontSize="sm">
+            <strong> Current Price: </strong>$
+            {solData.market_data.price_usd.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Circulating Supply:</strong>{" "}
+            {solData.supply.circulating.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Current Market Cap USD:</strong> $
+            {solData.marketcap.current_marketcap_usd.toLocaleString()}
+          </Text>
+          <Text fontSize="sm">
+            <strong>Volume Past 24 Hours:</strong> $
+            {solData.market_data.volume_last_24_hours.toLocaleString()}
+          </Text>
+        </HStack>
+      </Center>
+      <Container
+        maxW="container.xl"
+        centerContent
+        borderRadius={6}
+        border="2px"
+        borderColor="blue.900"
+      >
+        <Line data={data} options={options} />
+      </Container>
+    </Container>
   );
 }
 

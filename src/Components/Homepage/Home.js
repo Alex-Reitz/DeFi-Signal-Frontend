@@ -1,28 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Flex,
-  Center,
-  VStack,
-  Heading,
-  Avatar,
-  AvatarGroup,
-  Text,
-  Icon,
-  IconButton,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Divider,
-  Link,
-  Box,
-  Button,
-  Input,
-  InputGroup,
-  InputLeftElement,
-} from "@chakra-ui/react";
+import { Flex, Center, Box } from "@chakra-ui/react";
 import DeFiSignalApi from "../../api/api";
 import Loading from "../Loading/Loading";
 import EthGas from "./EthGas";
@@ -31,7 +8,6 @@ import EthTvl from "./EthTvl";
 import BinanceTvl from "./BinanceTvl";
 import SolanaTvl from "./SolanaTvl";
 import PolygonTvl from "./PolygonTvl";
-import EthMetrics from "./EthMetrics";
 
 function Home() {
   const [gasData, setGasData] = useState([]);
@@ -39,7 +15,7 @@ function Home() {
   const [solData, setSolData] = useState([]);
   const [polygonData, setPolygonData] = useState([]);
   const [bnbData, setBNBData] = useState([]);
-  const [chartData, setChartData] = useState([]);
+  const [TVLChartData, setTVLChartData] = useState([]);
   const [ethChartData, setEthChartData] = useState([]);
   const [binanceChartData, setBinanceChartData] = useState([]);
   const [solanaChartData, setSolanaChartData] = useState([]);
@@ -70,7 +46,7 @@ function Home() {
     }
     async function getTVLChart() {
       const res = await DeFiSignalApi.charts();
-      setChartData(res.slice(735));
+      setTVLChartData(res.slice(735));
     }
     async function getEthChart() {
       const res = await DeFiSignalApi.EthChart();
@@ -78,7 +54,7 @@ function Home() {
     }
     async function getBinanceChart() {
       const res = await DeFiSignalApi.BinanceChart();
-      setBinanceChartData(res.slice(735));
+      setBinanceChartData(res);
     }
     async function getSolanaChart() {
       const res = await DeFiSignalApi.SolanaChart();
@@ -86,7 +62,7 @@ function Home() {
     }
     async function getPolygonChart() {
       const res = await DeFiSignalApi.PolygonChart();
-      setPolygonChartData(res.slice(735));
+      setPolygonChartData(res);
     }
 
     setInfoLoaded(false);
@@ -111,7 +87,7 @@ function Home() {
         </Center>
       </Box>
       <Box>
-        <TotalTvl chartData={chartData} />
+        <TotalTvl TVLChartData={TVLChartData} />
       </Box>
       <Box>
         {" "}
@@ -119,14 +95,17 @@ function Home() {
       </Box>
       <Box>
         {" "}
-        <BinanceTvl binanceChartData={binanceChartData} />
+        <BinanceTvl binanceChartData={binanceChartData} bnbData={bnbData} />
       </Box>
       <Box>
         {" "}
-        <SolanaTvl solanaChartData={solanaChartData} />
+        <SolanaTvl solanaChartData={solanaChartData} solData={solData} />
       </Box>
       <Box>
-        <PolygonTvl polygonChartData={polygonChartData} />
+        <PolygonTvl
+          polygonChartData={polygonChartData}
+          polygonData={polygonData}
+        />
       </Box>
     </Flex>
   );

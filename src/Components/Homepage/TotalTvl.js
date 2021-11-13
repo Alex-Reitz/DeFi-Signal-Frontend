@@ -1,30 +1,29 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import { Container } from "@chakra-ui/react";
 
-function TotalTvl({ chartData }) {
+function TotalTvl({ TVLChartData }) {
   const data = {
-    labels: chartData.map(function (a) {
+    labels: TVLChartData.map(function (a) {
       var date = new Date(a.date * 1000);
       return date.toLocaleDateString();
     }),
     datasets: [
       {
-        data: chartData.map(function (a) {
+        data: TVLChartData.map(function (a) {
           return a.totalLiquidityUSD;
         }),
         fill: true,
-        backgroundColor: "#2e4355",
-        pointBorderColor: "#8884d8",
-        pointBorderWidth: 2,
-        showLine: true,
+        backgroundColor: "#000521",
+        pointBorderWidth: 1,
         pointRadius: 0,
-        tension: 0.6,
-        borderColor: "white",
+        tension: 0.4,
       },
     ],
   };
 
   const options = {
+    responsive: true,
     maintainAspectRatio: true,
     layout: { padding: { bottom: 50 } },
     plugins: {
@@ -32,7 +31,7 @@ function TotalTvl({ chartData }) {
         display: true,
         align: "p",
         text: "Total Value Locked - All Chains",
-        color: "white",
+        color: "black",
         font: {
           size: 20,
         },
@@ -43,44 +42,42 @@ function TotalTvl({ chartData }) {
     },
     scales: {
       y: {
-        ticks: {
-          color: "white",
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
-        },
         grid: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
           display: false,
         },
       },
       x: {
-        borderColor: "white",
         grid: {
           display: false,
         },
         ticks: {
-          color: "white",
+          display: false,
         },
       },
     },
-    tooltips: {
-      mode: "index",
-      intersect: false,
-    },
-    hover: {
-      mode: "nearest",
-      intersect: true,
-    },
     interaction: {
       mode: "index",
+      padding: 10,
       intersect: false,
     },
   };
 
   return (
-    <div className="line-totaltvl">
-      <Line data={data} options={options} />
-    </div>
+    <Container maxW="container.xl" mt={10}>
+      <Container
+        maxW="container.xl"
+        centerContent
+        borderRadius={6}
+        border="2px"
+        borderColor="blue.900"
+      >
+        <Line data={data} options={options} />
+      </Container>
+    </Container>
   );
 }
 
