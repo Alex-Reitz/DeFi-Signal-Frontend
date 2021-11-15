@@ -67,8 +67,8 @@ function SolanaTvl({ solanaChartData, solData }) {
   };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Center>
+    <>
+      <Center mt={10}>
         <Heading color="black">Solana</Heading>
       </Center>
       <Center>
@@ -100,7 +100,7 @@ function SolanaTvl({ solanaChartData, solData }) {
       >
         <Line data={data} options={options} />
       </Container>
-    </Container>
+    </>
   );
 }
 

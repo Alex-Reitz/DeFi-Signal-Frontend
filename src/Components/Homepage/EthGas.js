@@ -15,7 +15,7 @@ function EthGas({ gasData }) {
       <Box
         color={"white"}
         m={2}
-        w="80%"
+        w="75%"
         boxShadow={"2xl"}
         rounded={"md"}
         p={4}

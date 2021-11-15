@@ -67,8 +67,8 @@ function BinanceTvl({ binanceChartData, bnbData }) {
   };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Center>
+    <>
+      <Center mt={10}>
         <Heading color="black">Binance Smart Chain</Heading>
       </Center>
       <Center>
@@ -100,7 +100,7 @@ function BinanceTvl({ binanceChartData, bnbData }) {
       >
         <Line data={data} options={options} />
       </Container>
-    </Container>
+    </>
   );
 }
 

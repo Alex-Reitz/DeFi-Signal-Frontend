@@ -67,16 +67,15 @@ function TotalTvl({ TVLChartData }) {
   };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Container
-        maxW="container.xl"
-        centerContent
-        borderRadius={6}
-        border="2px"
-        borderColor="blue.900"
-      >
-        <Line data={data} options={options} />
-      </Container>
+    <Container
+      mt={10}
+      maxW="container.xl"
+      centerContent
+      borderRadius={6}
+      border="2px"
+      borderColor="blue.900"
+    >
+      <Line data={data} options={options} />
     </Container>
   );
 }

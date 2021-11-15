@@ -67,8 +67,8 @@ function PolygonTvl({ polygonChartData, polygonData }) {
   };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Center>
+    <>
+      <Center mt={10}>
         <Heading color="black">Polygon</Heading>
       </Center>
       <Center>
@@ -100,7 +100,7 @@ function PolygonTvl({ polygonChartData, polygonData }) {
       >
         <Line data={data} options={options} />
       </Container>
-    </Container>
+    </>
   );
 }
 

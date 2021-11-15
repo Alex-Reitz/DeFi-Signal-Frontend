@@ -67,8 +67,8 @@ function EthTvl({ ethChartData, ethData }) {
   };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Center>
+    <>
+      <Center mt={10}>
         <Heading color="black">Ethereum</Heading>
       </Center>
       <Center>
@@ -100,7 +100,7 @@ function EthTvl({ ethChartData, ethData }) {
       >
         <Line data={data} options={options} />
       </Container>
-    </Container>
+    </>
   );
 }
 

@@ -78,6 +78,7 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 };
 
 const LoggedInMenuLinks = ({ isOpen }) => {
+  const { currentUser } = useContext(UserContext);
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -92,7 +93,7 @@ const LoggedInMenuLinks = ({ isOpen }) => {
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/Learn">Learn </MenuItem>
-        <MenuItem to="/profile">profile</MenuItem>
+        <MenuItem to="/profile">{currentUser.username}</MenuItem>
         <MenuItem to="/protocols">Markets </MenuItem>
         <MenuItem to="/news">News </MenuItem>
         <MenuItem to="/logout" isLast>
