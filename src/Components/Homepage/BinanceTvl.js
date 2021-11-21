@@ -3,6 +3,8 @@ import { Line } from "react-chartjs-2";
 import { Text, Center, Heading, HStack, Container } from "@chakra-ui/react";
 
 function BinanceTvl({ binanceChartData, bnbData }) {
+  const presentValue = binanceChartData.pop().totalLiquidityUSD;
+
   const data = {
     labels: binanceChartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -34,6 +36,14 @@ function BinanceTvl({ binanceChartData, bnbData }) {
         color: "black",
         font: {
           size: 20,
+        },
+      },
+      subtitle: {
+        display: true,
+        text: `TVL Today: $${presentValue.toLocaleString()}`,
+        color: "black",
+        font: {
+          size: 12,
         },
       },
       legend: {

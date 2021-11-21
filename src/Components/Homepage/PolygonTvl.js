@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import { Text, Center, Heading, HStack, Container } from "@chakra-ui/react";
 
 function PolygonTvl({ polygonChartData, polygonData }) {
+  const presentValue = polygonChartData.pop().totalLiquidityUSD;
   const data = {
     labels: polygonChartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -34,6 +35,14 @@ function PolygonTvl({ polygonChartData, polygonData }) {
         color: "black",
         font: {
           size: 20,
+        },
+      },
+      subtitle: {
+        display: true,
+        text: `TVL Today: $${presentValue.toLocaleString()}`,
+        color: "black",
+        font: {
+          size: 12,
         },
       },
       legend: {

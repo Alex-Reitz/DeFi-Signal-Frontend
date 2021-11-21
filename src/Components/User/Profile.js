@@ -76,7 +76,7 @@ const About = () => {
       <BaseContainer px="20px">
         <VStack spacing={8} py="2rem" padding="4">
           <VStack align="center">
-            <Heading as="h1" color="brand.gray_dark">
+            <Heading as="h1" color="brand.gray_dark" m={2} p={2}>
               Hey {currentUser.username}!
             </Heading>
             <Center color="gray.700">Here is your profile information</Center>{" "}

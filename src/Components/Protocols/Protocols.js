@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import DeFiSignalApi from "../../api/api";
-import "./Protocols.css";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  Container,
+  Heading,
+  Center,
+} from "@chakra-ui/react";
 
 function Protocols() {
   const [protocols, setProtocols] = useState([]);
@@ -20,46 +32,69 @@ function Protocols() {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <div className="table">
-      <div className="tr th">
-        <div className="td">Ranking</div>
-        <div className="td">Symbol</div>
-        <div className="td">Name</div>
-        <div className="td">Category</div>
-        <div className="td">Chain</div>
-        <div className="td">Market Cap</div>
-        <div className="td">Total Value Locked</div>
-      </div>
-      {protocols.map((protocol, index) => {
-        return (
-          <div key={protocol.id} className="tr">
-            <div className="td">
-              <span>{index + 1}</span>
-            </div>
-            <div className="td">
-              <span>{protocol.symbol}</span>
-            </div>
-            <div className="td">
-              <span>{protocol.name}</span>
-            </div>
-            <div className="td">
-              <span>{protocol.category}</span>
-            </div>
-            <div className="td">
-              <span>{protocol.chain}</span>
-            </div>
-            <div className="td">
-              <span>
-                {protocol.mcap ? `$${protocol.mcap.toLocaleString()}` : "-"}
-              </span>
-            </div>
-            <div className="td">
-              <span>${protocol.tvl.toLocaleString()}</span>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Center p={2}>
+        <Heading color="black">Protocols by TVL - DeFi Llama</Heading>
+      </Center>
+      <Container
+        maxW="container.xl"
+        centerContent
+        borderRadius={6}
+        border="2px"
+        mt={5}
+        borderColor="blue.900"
+      >
+        <Table size="sm" variant="striped" colorScheme="gray">
+          <TableCaption>All Protocols Listed</TableCaption>
+          <Thead>
+            <Tr>
+              <Th fontSize={15} color="black" p={2}>
+                Ranking
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Symbol
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Name
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Category
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Chain
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Market Cap
+              </Th>
+              <Th fontSize={15} color="black" p={2}>
+                Total Value Locked
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {protocols.map((protocol, index) => {
+              return (
+                <>
+                  <Tr>
+                    <Td>{index + 1}</Td>
+                    <Td>{protocol.symbol}</Td>
+                    <Td>{protocol.name}</Td>
+                    <Td>{protocol.category}</Td>
+                    <Td>{protocol.chain}</Td>
+                    <Td>
+                      {protocol.mcap
+                        ? `$${protocol.mcap.toLocaleString()}`
+                        : "-"}
+                    </Td>
+                    <Td>${protocol.tvl.toLocaleString()}</Td>
+                  </Tr>
+                </>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </Container>
+    </>
   );
 }
 

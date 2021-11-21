@@ -1,6 +1,25 @@
 import React, { useContext } from "react";
 import UserContext from "../Auth/UserContext";
-import { Link, Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  Link,
+  Box,
+  Flex,
+  Text,
+  Button,
+  Stack,
+  Menu,
+  MenuButton,
+  MenuList,
+  Center,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuIcon,
+  MenuCommand,
+  MenuDivider,
+} from "@chakra-ui/react";
+
 import Logo from "./Logo";
 
 const NavBar = () => {
@@ -47,7 +66,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-const MenuIcon = () => (
+const MenuSymbol = () => (
   <svg
     width="24px"
     viewBox="0 0 20 20"
@@ -62,7 +81,7 @@ const MenuIcon = () => (
 const MenuToggle = ({ toggle, isOpen }) => {
   return (
     <Box display={{ base: "block", md: "none" }} onClick={toggle}>
-      {isOpen ? <CloseIcon /> : <MenuIcon />}
+      {isOpen ? <CloseIcon /> : <MenuSymbol />}
     </Box>
   );
 };
@@ -94,7 +113,46 @@ const LoggedInMenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/Learn">Learn </MenuItem>
         <MenuItem to="/profile">{currentUser.username}</MenuItem>
-        <MenuItem to="/protocols">Markets </MenuItem>
+        <Menu>
+          <MenuButton
+            px={2}
+            py={1}
+            borderRadius="md"
+            _hover={{ bg: "blue.400" }}
+            _expanded={{ bg: "blue.400" }}
+            _focus={{ boxShadow: "outline" }}
+          >
+            Markets <ChevronDownIcon />
+          </MenuButton>
+          <MenuList>
+            <Center>
+              {" "}
+              <MenuItem
+                _hover={{ bg: "gray.300" }}
+                p={1}
+                borderRadius="md"
+                fontSize={18}
+                color="black"
+                to="/protocols"
+              >
+                Protocols - DeFi Llama
+              </MenuItem>
+            </Center>
+            <MenuDivider />
+            <Center>
+              <MenuItem
+                _hover={{ bg: "gray.300" }}
+                p={1}
+                borderRadius="md"
+                fontSize={18}
+                color="black"
+                to="/home"
+              >
+                Global DeFi Data - Coin Gecko
+              </MenuItem>
+            </Center>
+          </MenuList>
+        </Menu>
         <MenuItem to="/news">News </MenuItem>
         <MenuItem to="/logout" isLast>
           <Button
@@ -167,7 +225,7 @@ const NavBarContainer = ({ children, ...props }) => {
       wrap="wrap"
       w="100%"
       p={5}
-      bg={["white", "white", "white", "blue.400"]}
+      bg={["white", "white", "white", "blue"]}
       color={["white", "white", "white", "white"]}
       {...props}
     >

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DeFiSignalApi from "../../api/api";
 import Article from "./Article";
 import Loading from "../Loading/Loading";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid, Heading, Center } from "@chakra-ui/react";
 
 function NewsList() {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -21,13 +21,20 @@ function NewsList() {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <SimpleGrid columns={3} spacing={3}>
-      {newsArticles.map((article) => (
-        <Box w="100%" p={4} color="white" key={article.id}>
-          <Article key={article.id} info={article} />
-        </Box>
-      ))}
-    </SimpleGrid>
+    <>
+      <Center>
+        <Heading color="black" p={2}>
+          Latest News From Messari
+        </Heading>
+      </Center>
+      <SimpleGrid columns={2} spacing={2}>
+        {newsArticles.map((article) => (
+          <Box w="100%" p={4} color="white" key={article.id}>
+            <Article key={article.id} info={article} />
+          </Box>
+        ))}
+      </SimpleGrid>
+    </>
   );
 }
 

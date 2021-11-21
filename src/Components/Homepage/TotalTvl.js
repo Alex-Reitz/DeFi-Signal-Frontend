@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import { Container } from "@chakra-ui/react";
 
 function TotalTvl({ TVLChartData }) {
+  const presentValue = TVLChartData.pop().totalLiquidityUSD;
   const data = {
     labels: TVLChartData.map(function (a) {
       var date = new Date(a.date * 1000);
@@ -34,6 +35,14 @@ function TotalTvl({ TVLChartData }) {
         color: "black",
         font: {
           size: 20,
+        },
+      },
+      subtitle: {
+        display: true,
+        text: `TVL Today: $${presentValue.toLocaleString()}`,
+        color: "black",
+        font: {
+          size: 12,
         },
       },
       legend: {
