@@ -8,6 +8,7 @@ import NewsList from "./News/NewsList";
 import Protocols from "./Protocols/Protocols";
 import Learn from "./Learn/Learn";
 import UserProfile from "./User/Profile";
+import Protocol from "./Protocols/Protocol";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -36,6 +37,9 @@ function Routes({ signup, login, logout }) {
         </Route>
         <Route exact path="/profile">
           <UserProfile />
+        </Route>
+        <Route exact path="/protocol/:slug">
+          <Protocol />
         </Route>
         <Redirect to="/" />
       </Switch>

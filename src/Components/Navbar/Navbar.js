@@ -138,19 +138,6 @@ const LoggedInMenuLinks = ({ isOpen }) => {
                 Protocols - DeFi Llama
               </MenuItem>
             </Center>
-            <MenuDivider />
-            <Center>
-              <MenuItem
-                _hover={{ bg: "gray.300" }}
-                p={1}
-                borderRadius="md"
-                fontSize={18}
-                color="black"
-                to="/home"
-              >
-                Global DeFi Data - Coin Gecko
-              </MenuItem>
-            </Center>
           </MenuList>
         </Menu>
         <MenuItem to="/news">News </MenuItem>

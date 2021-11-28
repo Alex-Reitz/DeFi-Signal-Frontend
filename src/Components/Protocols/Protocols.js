@@ -46,6 +46,7 @@ function Protocols() {
       >
         <Table size="sm" variant="striped" colorScheme="gray">
           <TableCaption>All Protocols Listed</TableCaption>
+
           <Thead>
             <Tr>
               <Th fontSize={15} color="black" p={2}>
@@ -54,6 +55,7 @@ function Protocols() {
               <Th fontSize={15} color="black" p={2}>
                 Symbol
               </Th>
+
               <Th fontSize={15} color="black" p={2}>
                 Name
               </Th>
@@ -71,14 +73,18 @@ function Protocols() {
               </Th>
             </Tr>
           </Thead>
+
           <Tbody>
             {protocols.map((protocol, index) => {
+              const slug = protocol.slug;
               return (
-                <>
+                <React.Fragment key={protocol.id}>
                   <Tr>
                     <Td>{index + 1}</Td>
                     <Td>{protocol.symbol}</Td>
-                    <Td>{protocol.name}</Td>
+                    <Td>
+                      <a href={`/protocol/${slug}`}>{protocol.name}</a>
+                    </Td>
                     <Td>{protocol.category}</Td>
                     <Td>{protocol.chain}</Td>
                     <Td>
@@ -88,7 +94,7 @@ function Protocols() {
                     </Td>
                     <Td>${protocol.tvl.toLocaleString()}</Td>
                   </Tr>
-                </>
+                </React.Fragment>
               );
             })}
           </Tbody>

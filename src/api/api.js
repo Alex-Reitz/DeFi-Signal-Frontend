@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://defisignal-backend.herokuapp.com";
-//const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+//const BASE_URL = "https://defisignal-backend.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class DeFiSignalApi {
   static token;
@@ -101,6 +101,11 @@ class DeFiSignalApi {
   //update user information
   static async update(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
+    return res;
+  }
+  //Global Data
+  static async globalData() {
+    let res = await this.request(`data/globaldefi`);
     return res;
   }
 }
