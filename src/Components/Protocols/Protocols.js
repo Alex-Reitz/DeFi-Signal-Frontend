@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import DeFiSignalApi from "../../api/api";
+import { Link } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -83,7 +84,14 @@ function Protocols() {
                     <Td>{index + 1}</Td>
                     <Td>{protocol.symbol}</Td>
                     <Td>
-                      <a href={`/protocol/${slug}`}>{protocol.name}</a>
+                      <Link
+                        to={{
+                          pathname: `/protocol/${slug}`,
+                          state: protocol,
+                        }}
+                      >
+                        {protocol.name}
+                      </Link>
                     </Td>
                     <Td>{protocol.category}</Td>
                     <Td>{protocol.chain}</Td>
