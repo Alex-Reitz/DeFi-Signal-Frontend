@@ -103,11 +103,10 @@ class DeFiSignalApi {
     let res = await this.request(`users/${username}`, data, "patch");
     return res;
   }
-  //Global Data
+  //data on specific protocol
   static async getGeckoData(geckoID) {
-    console.log(geckoID);
-    let res = await this.request(`data/gecko/${geckoID}`);
-    console.log(res);
+    console.log("Line 108!!!!!!!", geckoID);
+    let res = await this.request(`data/${geckoID}`, geckoID, "post");
     return res;
   }
 }
