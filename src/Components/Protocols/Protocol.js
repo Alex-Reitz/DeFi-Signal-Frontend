@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import DeFiSignalApi from "../../api/api";
 import {
   Box,
   Heading,
@@ -42,10 +43,19 @@ import {
 } */
 
 function Protocol() {
-  const { slug } = useParams();
-  const [src, setSrc] = useState(null);
   let data = useLocation();
-  console.log(data.state);
+  const [geckoData, setGeckoData] = useState([]);
+  const geckoID = data.state.gecko_id;
+  console.log(geckoID);
+  useEffect(() => {
+    async function getGeckoData() {
+      const res = await DeFiSignalApi.getGeckoData(geckoID);
+      setGeckoData(res);
+    }
+    getGeckoData();
+  }, [geckoID]);
+
+  console.log(geckoData);
   let protData = data.state;
   return (
     <Box pt={5}>

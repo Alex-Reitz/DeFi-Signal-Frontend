@@ -104,8 +104,10 @@ class DeFiSignalApi {
     return res;
   }
   //Global Data
-  static async globalData() {
-    let res = await this.request(`data/globaldefi`);
+  static async getGeckoData(geckoID) {
+    console.log(geckoID);
+    let res = await this.request(`data/gecko/${geckoID}`);
+    console.log(res);
     return res;
   }
 }
