@@ -45,20 +45,19 @@ import {
 function Protocol() {
   let data = useLocation();
   const [geckoData, setGeckoData] = useState([]);
-  const [coinGeckoID, setCoinGeckoID] = useState("");
+  let protData = data.state;
+
+  const geckoID = data.state.gecko_id;
+  console.log("Here is the gecko ID in protocol.js", geckoID);
 
   useEffect(() => {
-    setCoinGeckoID(data.state.gecko_id);
-    console.log(coinGeckoID);
-    async function getGeckoData() {
-      console.log(coinGeckoID);
-      const res = await DeFiSignalApi.getGeckoData(coinGeckoID);
+    async function getGeckoData(geckoID) {
+      const res = await DeFiSignalApi.getGeckoData(geckoID);
+      console.log(res);
       setGeckoData(res);
     }
-    getGeckoData();
-  }, [coinGeckoID]);
-
-  let protData = data.state;
+    getGeckoData(geckoID);
+  }, []);
   return (
     <Box pt={5}>
       <Center>
