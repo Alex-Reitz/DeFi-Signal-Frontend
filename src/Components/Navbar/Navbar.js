@@ -111,7 +111,6 @@ const LoggedInMenuLinks = ({ isOpen }) => {
         pt={[4, 4, 0, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/Learn">Learn </MenuItem>
         <MenuItem to="/profile">{currentUser.username}</MenuItem>
         <Menu>
           <MenuButton

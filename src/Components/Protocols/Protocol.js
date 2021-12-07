@@ -10,7 +10,7 @@ import {
   VStack,
   Text,
 } from "@chakra-ui/react";
-
+//Data from useLocation()
 /* {
     "id": "419",
     "name": "Saber",
@@ -48,16 +48,15 @@ function Protocol() {
   let protData = data.state;
 
   const geckoID = data.state.gecko_id;
-  console.log("Here is the gecko ID in protocol.js", geckoID);
 
   useEffect(() => {
     async function getGeckoData(geckoID) {
       const res = await DeFiSignalApi.getGeckoData(geckoID);
-      console.log(res);
       setGeckoData(res);
     }
     getGeckoData(geckoID);
   }, []);
+
   return (
     <Box pt={5}>
       <Center>
@@ -93,6 +92,16 @@ function Protocol() {
           </Box>
         </HStack>
       </Center>
+      {geckoID ? (
+        <Box w="100%" mt={2}>
+          <Center>Coin Gecko Data</Center>
+          <Box>
+            <Text m={2}>{geckoData.result.description.en}</Text>
+          </Box>
+        </Box>
+      ) : (
+        <h3>No data available from Coin Gecko</h3>
+      )}
     </Box>
   );
 }

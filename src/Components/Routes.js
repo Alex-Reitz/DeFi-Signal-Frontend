@@ -32,9 +32,6 @@ function Routes({ signup, login, logout }) {
         <Route exact path="/protocols">
           <Protocols />
         </Route>
-        <Route exact path="/learn">
-          <Learn />
-        </Route>
         <Route exact path="/profile">
           <UserProfile />
         </Route>

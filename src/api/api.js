@@ -105,7 +105,6 @@ class DeFiSignalApi {
   }
   //Data on specific protocol
   static async getGeckoData(ID) {
-    console.log("Get request in api.js and geckoID", ID);
     let res = await this.request(`data/${ID}`);
     return res;
   }
