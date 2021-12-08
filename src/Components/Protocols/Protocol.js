@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import DeFiSignalApi from "../../api/api";
+import GeckoProtocol from "./GeckoProtocol";
 import {
   Box,
   Heading,
@@ -56,7 +57,6 @@ function Protocol() {
     }
     getGeckoData(geckoID);
   }, []);
-
   return (
     <Box pt={5}>
       <Center>
@@ -93,12 +93,7 @@ function Protocol() {
         </HStack>
       </Center>
       {geckoID ? (
-        <Box w="100%" mt={2}>
-          <Center>Coin Gecko Data</Center>
-          <Box>
-            <Text m={2}>{geckoData.result.description.en}</Text>
-          </Box>
-        </Box>
+        <GeckoProtocol geckoData={geckoData} />
       ) : (
         <h3>No data available from Coin Gecko</h3>
       )}

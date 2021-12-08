@@ -6,7 +6,6 @@ import Signup from "./Auth/Signup";
 import Logout from "./Auth/Logout";
 import NewsList from "./News/NewsList";
 import Protocols from "./Protocols/Protocols";
-import Learn from "./Learn/Learn";
 import UserProfile from "./User/Profile";
 import Protocol from "./Protocols/Protocol";
 
