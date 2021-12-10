@@ -29,7 +29,7 @@ function Protocols() {
     setInfoLoaded(false);
     getProtocolData();
   }, []);
-
+  console.log(protocols);
   if (!infoLoaded) return <Loading />;
 
   return (

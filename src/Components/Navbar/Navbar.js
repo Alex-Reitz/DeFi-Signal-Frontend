@@ -12,12 +12,6 @@ import {
   MenuButton,
   MenuList,
   Center,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuIcon,
-  MenuCommand,
-  MenuDivider,
 } from "@chakra-ui/react";
 
 import Logo from "./Logo";
