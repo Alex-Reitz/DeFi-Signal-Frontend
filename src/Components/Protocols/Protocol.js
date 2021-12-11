@@ -67,28 +67,27 @@ function Protocol() {
       <VStack p={4} align="center">
         <Text color="black">{protData.description}</Text>
         <Text>
-          <a href={protData.url}>Project's Site </a>
+          <a href={protData.url}>{protData.name}'s website </a>
         </Text>
       </VStack>
       <Center>
         <HStack>
           <Box>
-            <HStack>
-              <Text textStyle="p1">Chain:</Text>
-              <Text>{protData.chain}</Text>
-            </HStack>
+            <Text>
+              <strong>Chain:</strong>
+              {protData.chain}
+            </Text>{" "}
           </Box>
           <Box>
-            <HStack>
-              <Text textStyle="p1">Category:</Text>
-              <Text>{protData.category}</Text>{" "}
-            </HStack>
+            <Text>
+              <strong>Category:</strong>
+              {protData.category}
+            </Text>
           </Box>
           <Box>
-            <HStack>
-              <Text textStyle="p1">Twitter:</Text>
-              <Text> @{protData.twitter}</Text>
-            </HStack>
+            <Text>
+              <strong>Twitter:</strong>@{protData.twitter}
+            </Text>
           </Box>
         </HStack>
       </Center>
