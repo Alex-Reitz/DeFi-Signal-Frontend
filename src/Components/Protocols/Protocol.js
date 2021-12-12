@@ -6,10 +6,10 @@ import {
   Box,
   Heading,
   Center,
-  Stack,
   HStack,
   VStack,
   Text,
+  Container,
 } from "@chakra-ui/react";
 //Data from useLocation()
 /* {
@@ -57,19 +57,23 @@ function Protocol() {
     }
     getGeckoData(geckoID);
   }, []);
+  console.log(protData);
   return (
-    <Box pt={5}>
+    <Container maxW="container.lg">
       <Center>
         <Heading textStyle="h1" color="black">
           {protData.name}
         </Heading>
       </Center>
-      <VStack p={4} align="center">
-        <Text color="black">{protData.description}</Text>
-        <Text>
-          <a href={protData.url}>{protData.name}'s website </a>
-        </Text>
-      </VStack>
+      <Center p={3}>
+        <VStack p={1}>
+          <Text color="black">{protData.description}</Text>
+
+          <Text>
+            <a href={protData.url}>{protData.name}'s website </a>
+          </Text>
+        </VStack>
+      </Center>
       <Center>
         <HStack>
           <Box>
@@ -96,7 +100,7 @@ function Protocol() {
       ) : (
         <h3>No data available from Coin Gecko</h3>
       )}
-    </Box>
+    </Container>
   );
 }
 

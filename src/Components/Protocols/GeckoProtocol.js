@@ -10,8 +10,11 @@ import {
   SimpleGrid,
   Divider,
   Flex,
-  Spacer,
+  VStack,
+  Image,
+  Link,
 } from "@chakra-ui/react";
+import { findAllByAltText } from "@testing-library/dom";
 
 /* additional_notices: []
 asset_platform_id: "solana"
@@ -60,73 +63,130 @@ function GeckoProtocol({ geckoData }) {
   if (!infoLoaded) return <Loading />;
 
   return (
-    <Container bg="gray.200" maxW="container.lg" mt={2}>
+    <Container bg="white" maxW="container.lg" mt={10}>
+      <Divider />
       <Center p={2}>
-        <Heading fontSize={20} color="black">
-          Coin Gecko Data
-        </Heading>
+        <VStack>
+          <Heading fontSize={20} color="black">
+            Coin Gecko Data
+          </Heading>
+          <Image src={data.image.small} alt="logo" />
+        </VStack>
       </Center>
-      <Text p={2}>{data.description.en}</Text>
-      {data.asset_platform_id ? (
-        <Text>
-          <strong>Asset Platform ID:</strong> {data.asset_platform_id}
-        </Text>
-      ) : null}
-      {data.categories.length > 0 ? (
-        <Text fontSize={15}>
-          <strong>Categories: </strong>
-          <span>
-            {data.categories.map((category) => (
-              <span>{category}, </span>
-            ))}
-          </span>
-        </Text>
-      ) : null}
+      <Center>
+        <VStack>
+          <Text p={2}>{data.description.en}</Text>
+          {data.asset_platform_id ? (
+            <Text>
+              <strong>Asset Platform ID:</strong> {data.asset_platform_id}
+            </Text>
+          ) : null}
+          {data.categories.length > 0 ? (
+            <Text fontSize={15}>
+              <strong>Categories: </strong>
+              <span>
+                {data.categories.map((category) => (
+                  <span>{category}, </span>
+                ))}
+              </span>
+            </Text>
+          ) : null}
+          <Text>
+            <strong>Coin Gecko Rank: </strong>
+            {data.market_cap_rank}
+          </Text>
+        </VStack>
+      </Center>
 
       <Center>
-        <Box bg="gray.300" w="30rem" m={2} p={1} borderRadius={10}>
+        <Box bg="gray.900" w="30rem" m={2} p={1} borderRadius={10}>
           <Center>
-            <Text color="black" fontSize={19} fontWeight={500}>
+            <Text color="white" fontSize={19} fontWeight={500}>
               Market Data
             </Text>
           </Center>
           <SimpleGrid columns={1}>
             <Flex justifyContent="space-between">
-              <Box p="1">Current Price</Box>
-              <Box p="1">${data.market_data.current_price.usd}</Box>
-            </Flex>
-            <Divider />
-            <Flex justifyContent="space-between">
-              <Box p="1">Circulating Supply</Box>
-              <Box p="1">
-                {data.market_data.circulating_supply.toLocaleString()}
+              <Box color="white" p="1">
+                Current Price
+              </Box>
+              <Box color="white" p="1">
+                ${data.market_data.current_price.usd}
               </Box>
             </Flex>
             <Divider />
             <Flex justifyContent="space-between">
-              <Box p="1">Market Cap</Box>
-              <Box p="1">
+              <Box color="white" p="1">
+                Circulating Supply
+              </Box>
+              <Box color="white" p="1">
+                {data.market_data.circulating_supply.toLocaleString()}
+              </Box>
+            </Flex>
+            <Divider />
+            {data.market_data.max_supply ? (
+              <Flex justifyContent="space-between">
+                <Box color="white" p="1">
+                  Total Supply
+                </Box>
+                <Box color="white" p="1">
+                  {data.market_data.max_supply.toLocaleString()}
+                </Box>
+              </Flex>
+            ) : null}
+            <Divider />
+            <Flex justifyContent="space-between">
+              <Box color="white" p="1">
+                Market Cap
+              </Box>
+              <Box color="white" p="1">
                 ${data.market_data.market_cap.usd.toLocaleString()}
               </Box>
             </Flex>
             <Divider />
             <Flex justifyContent="space-between">
-              <Box p="1">Total Value Locked</Box>
-              <Box p="1">
+              <Box color="white" p="1">
+                Total Value Locked
+              </Box>
+              <Box color="white" p="1">
                 ${data.market_data.total_value_locked.usd.toLocaleString()}
               </Box>
             </Flex>
             <Divider />
             <Flex justifyContent="space-between">
-              <Box p="1">Total Volume</Box>
-              <Box p="1">
+              <Box color="white" p="1">
+                Total Volume
+              </Box>
+              <Box color="white" p="1">
                 ${data.market_data.total_volume.usd.toLocaleString()}
               </Box>
             </Flex>
             <Divider />
+            <Flex justifyContent="space-between">
+              <Box color="white" p="1">
+                All Time High
+              </Box>
+              <Box color="white" p="1">
+                ${data.market_data.ath.usd.toLocaleString()}
+              </Box>
+            </Flex>
+            <Divider />
+            <Flex justifyContent="space-between">
+              <Box color="white" p="1">
+                All Time Low
+              </Box>
+              <Box color="white" p="1">
+                ${data.market_data.atl.usd.toLocaleString()}
+              </Box>
+            </Flex>
           </SimpleGrid>
         </Box>
       </Center>
+      <Text fontSize={22} align="center">
+        <Link href={data.links.chat_url[0]}>
+          <i class="fab fa-discord"></i>
+        </Link>
+      </Text>
     </Container>
   );
 }

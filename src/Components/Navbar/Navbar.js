@@ -122,7 +122,7 @@ const LoggedInMenuLinks = ({ isOpen }) => {
               {" "}
               <MenuItem
                 _hover={{ bg: "gray.300" }}
-                p={1}
+                p={2}
                 borderRadius="md"
                 fontSize={18}
                 color="black"
