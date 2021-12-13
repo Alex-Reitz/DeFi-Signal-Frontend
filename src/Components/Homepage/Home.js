@@ -26,7 +26,6 @@ function Home() {
     async function getGasData() {
       const res = await DeFiSignalApi.getGas();
       setGasData(res);
-      setInfoLoaded(true);
     }
     async function ethMetrics() {
       const res = await DeFiSignalApi.getEthMetrics();
@@ -65,7 +64,6 @@ function Home() {
       setPolygonChartData(res);
     }
 
-    setInfoLoaded(false);
     getGasData();
     ethMetrics();
     solMetrics();
@@ -77,7 +75,16 @@ function Home() {
     getSolanaChart();
     getPolygonChart();
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInfoLoaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   if (!infoLoaded) return <Loading />;
+
   return (
     <Flex w={["100%"]} p="3%" flexDir="column" overflow="auto" minH="100vh">
       <Box>
