@@ -79,7 +79,7 @@ function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setInfoLoaded(true);
-    }, 3000);
+    }, 15000);
     return () => clearTimeout(timer);
   }, []);
 

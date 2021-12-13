@@ -4,7 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 export default function Logo(props) {
   return (
     <Box {...props}>
-      <Text fontSize="lg" fontWeight="bold">
+      <Text fontSize="lg" fontWeight="bold" color="white">
         DΞFI Signal
       </Text>
     </Box>

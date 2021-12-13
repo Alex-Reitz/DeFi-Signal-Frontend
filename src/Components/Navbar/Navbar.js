@@ -17,13 +17,13 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
     <Link to={to}>
       <Button
         variant="link"
-        color={["white", "white", "white", "primary.500"]}
+        color={["white", "white", "white", "white"]}
         _hover={{
           color: {
-            base: "blue.600",
-            sm: "blue.100",
-            md: "blue.600",
-            lg: "blue.600",
+            base: "gray.500",
+            sm: "gray.500",
+            md: "gray.500",
+            lg: "gray.500",
           },
           textDecoration: "none",
         }}
@@ -91,7 +91,7 @@ const Header = (props) => {
       w="100vw"
       p={0}
       color={["white", "white", "white", "primary.700"]}
-      bg={["primary.500", "primary.500", "primary.500", "white"]}
+      bg={["blue.600", "blue.600", "blue.600", "blue.600"]}
       boxShadow={useColorModeValue(
         "0px 0.25rem 0.75rem 0px rgb(190 194 255 / 18%)",
         "0px 0.25rem 0.75rem 0px rgb(0 14 81 / 35%)"
@@ -105,10 +105,10 @@ const Header = (props) => {
         align="center"
         wrap="wrap"
         w="100%"
-        maxW="1366px"
+        maxW="90vw"
         m="auto"
         px="20px"
-        py={6}
+        py={5}
       >
         <Flex align="center">
           <Logo onClick={menuItemCloseNav} />
@@ -124,66 +124,59 @@ const Header = (props) => {
           )}
         </Box>
 
-        <Box
-          display={{ base: show ? "flex" : "none", md: "flex" }}
-          justifyContent="center"
-          align="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Flex
-            justify="center"
+        {currentUser ? (
+          <Box
+            display={{ base: show ? "flex" : "none", md: "flex" }}
+            justifyContent="center"
             align="center"
-            direction={["column", "column", "column", "row"]}
+            flexBasis={{ base: "100%", md: "auto" }}
           >
-            <MenuItem to="/" onClick={menuItemCloseNav}>
-              Home{" "}
-            </MenuItem>
-            <MenuItem to="/profile" onClick={menuItemCloseNav}>
-              {currentUser.username}
-            </MenuItem>
-            <MenuItem to="/news" onClick={menuItemCloseNav}>
-              News{" "}
-            </MenuItem>
-            <MenuItem to="/logout" onClick={menuItemCloseNav}>
-              Logout{" "}
-            </MenuItem>
-            <Link to="/users">
-              <Button
-                onClick={menuItemCloseNav}
-                size="sm"
-                rounded="md"
-                color={["primary.500", "primary.500", "primary.500", "white"]}
-                bg={["white", "white", "white", "primary.500"]}
-                _hover={{
-                  bg: [
-                    "primary.100",
-                    "primary.100",
-                    "primary.100",
-                    "primary.600",
-                  ],
-                }}
-                _active={{
-                  bg: [
-                    "primary.100",
-                    "primary.100",
-                    "primary.100",
-                    "primary.600",
-                  ],
-                }}
-                _focus={{
-                  bg: [
-                    "primary.100",
-                    "primary.100",
-                    "primary.600",
-                    "primary.600",
-                  ],
-                }}
-              >
-                Create Account
-              </Button>
-            </Link>
-          </Flex>
-        </Box>
+            <Flex
+              justify="center"
+              align="center"
+              direction={["column", "column", "column", "row"]}
+            >
+              <MenuItem to="/" onClick={menuItemCloseNav}>
+                Home{" "}
+              </MenuItem>
+              <MenuItem to="/profile" onClick={menuItemCloseNav}>
+                {currentUser.username}
+              </MenuItem>
+              <MenuItem to="/protocols" onClick={menuItemCloseNav}>
+                Protocols
+              </MenuItem>
+              <MenuItem to="/news" onClick={menuItemCloseNav}>
+                News{" "}
+              </MenuItem>
+              <MenuItem to="/logout" onClick={menuItemCloseNav}>
+                Logout{" "}
+              </MenuItem>
+            </Flex>
+          </Box>
+        ) : (
+          <Box
+            display={{ base: show ? "flex" : "none", md: "flex" }}
+            justifyContent="center"
+            align="center"
+            flexBasis={{ base: "100%", md: "auto" }}
+          >
+            <Flex
+              justify="center"
+              align="center"
+              direction={["column", "column", "column", "row"]}
+            >
+              <MenuItem to="/" onClick={menuItemCloseNav}>
+                Home{" "}
+              </MenuItem>
+              <MenuItem to="/login" onClick={menuItemCloseNav}>
+                Login{" "}
+              </MenuItem>
+              <MenuItem to="/signup" onClick={menuItemCloseNav}>
+                Signup{" "}
+              </MenuItem>
+            </Flex>
+          </Box>
+        )}
       </Flex>
     </Flex>
   );

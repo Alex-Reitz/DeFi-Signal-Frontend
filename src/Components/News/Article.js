@@ -5,6 +5,7 @@ import {
   Text,
   Stack,
   useColorModeValue,
+  Flex,
 } from "@chakra-ui/react";
 
 function Article({ info }) {
@@ -12,7 +13,7 @@ function Article({ info }) {
     <Center py={6}>
       <Box
         maxW={"50rem"}
-        H={"20rem"}
+        minH={"20rem"}
         w={"full"}
         bg={useColorModeValue("gray.900")}
         boxShadow={"2xl"}
@@ -54,11 +55,13 @@ function Article({ info }) {
               Author: {info.author.name}
             </Text>
             <Text color={"blue.200"}>{info.published_at}</Text>
-            <Text>
-              <a href={info.url}>Read the full article</a>
-            </Text>
           </Stack>
         </Stack>
+        <Center>
+          <Flex pt="1em" fontSize={20}>
+            <a href={info.url}>Read the full article</a>
+          </Flex>
+        </Center>
       </Box>
     </Center>
   );

@@ -27,7 +27,14 @@ function NewsList() {
           Latest News From Messari
         </Heading>
       </Center>
-      <SimpleGrid columns={2} spacing={2}>
+      <SimpleGrid
+        columns={{
+          base: 1, // 0-48em
+          md: 2, // 48em-80em,
+          xl: 3, // 80em+
+        }}
+        spacing={1}
+      >
         {newsArticles.map((article) => (
           <Box w="100%" p={4} color="white" key={article.id}>
             <Article key={article.id} info={article} />
