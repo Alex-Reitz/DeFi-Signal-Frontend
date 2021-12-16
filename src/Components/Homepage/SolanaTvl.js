@@ -26,7 +26,7 @@ function SolanaTvl({ solanaChartData, solData }) {
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    layout: { padding: { bottom: 50 } },
+    layout: { padding: { bottom: 0.1 } },
     plugins: {
       title: {
         display: true,
@@ -82,19 +82,31 @@ function SolanaTvl({ solanaChartData, solData }) {
       </Center>
       <Center>
         <HStack spacing="3rem">
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong> Current Price: </strong>$
             {solData.market_data.price_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Circulating Supply:</strong>{" "}
             {solData.supply.circulating.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Current Market Cap USD:</strong> $
             {solData.marketcap.current_marketcap_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Volume Past 24 Hours:</strong> $
             {solData.market_data.volume_last_24_hours.toLocaleString()}
           </Text>

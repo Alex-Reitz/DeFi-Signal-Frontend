@@ -15,7 +15,7 @@ function EthGas({ gasData }) {
       <Box
         color={"white"}
         m={2}
-        w="75%"
+        w={{ lg: "80%", md: "100%", sm: "100%" }}
         boxShadow={"2xl"}
         rounded={"md"}
         p={4}
@@ -23,12 +23,20 @@ function EthGas({ gasData }) {
       >
         <Box>
           <Center>
-            <Heading m={2} fontSize={"2xl"} fontFamily={"body"} color={"black"}>
+            <Heading
+              m={2}
+              fontSize={{ lg: "1.4rem", md: "1.1rem", sm: "1rem" }}
+              fontFamily={"body"}
+              color={"black"}
+            >
               Ethereum Gas Data
             </Heading>
           </Center>
         </Box>
-        <SimpleGrid columns={5}>
+        <SimpleGrid
+          columns={{ xl: "5", lg: "3", md: "3", sm: "3" }}
+          fontSize={{ lg: "1.2rem", md: "1rem", sm: "0.7rem" }}
+        >
           <Center>
             <Box>
               <Text color={"black"}>
@@ -40,7 +48,7 @@ function EthGas({ gasData }) {
               </Text>
             </Box>
           </Center>
-          <Center>
+          <Center display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}>
             <Box>
               <Text color={"black"}>
                 {" "}
@@ -54,12 +62,16 @@ function EthGas({ gasData }) {
           </Center>
           <Center>
             <Box>
-              <Image boxSize="100px" src={EthCoin} alt="Ethereum Logo" />
+              <Image
+                boxSize={{ lg: "100px", md: "75px", sm: "50px" }}
+                src={EthCoin}
+                alt="Ethereum Logo"
+              />
             </Box>
           </Center>
-          <Center>
+          <Center display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}>
             <Box>
-              <Text color={"black"} fontWeight={600}>
+              <Text color={"black"}>
                 <strong>Safe Low Wait:</strong> {gasData.gas.safeLowWait}{" "}
                 seconds
               </Text>

@@ -27,7 +27,7 @@ function BinanceTvl({ binanceChartData, bnbData }) {
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    layout: { padding: { bottom: 50 } },
+    layout: { padding: { bottom: 0.5 } },
     plugins: {
       title: {
         display: true,
@@ -82,20 +82,32 @@ function BinanceTvl({ binanceChartData, bnbData }) {
         <Heading color="black">Binance Smart Chain</Heading>
       </Center>
       <Center>
-        <HStack spacing="3rem">
-          <Text fontSize="sm">
+        <HStack spacing={{ xl: "3rem", sm: "5rem" }}>
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong> Current Price: </strong>$
             {bnbData.market_data.price_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Circulating Supply:</strong>{" "}
             {bnbData.supply.circulating.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Current Market Cap USD:</strong> $
             {bnbData.marketcap.current_marketcap_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Volume Past 24 Hours:</strong> $
             {bnbData.market_data.volume_last_24_hours.toLocaleString()}
           </Text>

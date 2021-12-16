@@ -26,7 +26,7 @@ function EthTvl({ ethChartData, ethData }) {
   const options = {
     responsive: true,
     maintainAspectRatio: true,
-    layout: { padding: { bottom: 50 } },
+    layout: { padding: { bottom: 0.5 } },
     plugins: {
       title: {
         display: true,
@@ -81,20 +81,32 @@ function EthTvl({ ethChartData, ethData }) {
         <Heading color="black">Ethereum</Heading>
       </Center>
       <Center>
-        <HStack spacing="3rem">
-          <Text fontSize="sm">
+        <HStack spacing={{ xl: "3rem", sm: "5rem" }}>
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong> Current Price: </strong>$
             {ethData.market_data.price_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Circulating Supply:</strong>{" "}
             {ethData.supply.circulating.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Current Market Cap USD:</strong> $
             {ethData.marketcap.current_marketcap_usd.toLocaleString()}
           </Text>
-          <Text fontSize="sm">
+          <Text
+            display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+            fontSize="sm"
+          >
             <strong>Volume Past 24 Hours:</strong> $
             {ethData.market_data.volume_last_24_hours.toLocaleString()}
           </Text>
@@ -107,7 +119,7 @@ function EthTvl({ ethChartData, ethData }) {
         border="2px"
         borderColor="blue.900"
       >
-        <Line data={data} options={options} />
+        <Line display="flex" data={data} options={options} />
       </Container>
     </>
   );

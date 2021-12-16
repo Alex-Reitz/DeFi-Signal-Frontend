@@ -88,7 +88,7 @@ const Header = (props) => {
       position="sticky"
       //direction="column"
       top="0"
-      w="100vw"
+      w="99vw"
       p={0}
       color={["white", "white", "white", "primary.700"]}
       bg={["blue.600", "blue.600", "blue.600", "blue.600"]}
