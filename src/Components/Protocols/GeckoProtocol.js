@@ -67,7 +67,10 @@ function GeckoProtocol({ geckoData }) {
       <Divider />
       <Center p={2}>
         <VStack>
-          <Heading fontSize={20} color="black">
+          <Heading
+            fontSize={{ xl: "20", lg: "18", md: "17", sm: "15" }}
+            color="black"
+          >
             Coin Gecko Data
           </Heading>
           <Image src={data.image.small} alt="logo" />
@@ -75,14 +78,20 @@ function GeckoProtocol({ geckoData }) {
       </Center>
       <Center>
         <VStack>
-          <Text p={2}>{data.description.en}</Text>
+          <Text
+            fontSize={{ xl: "18", lg: "16", md: "15", sm: "12", xs: "11" }}
+            p={2}
+            m={2}
+          >
+            {data.description.en}
+          </Text>
           {data.asset_platform_id ? (
-            <Text>
+            <Text fontSize={{ xl: "15", lg: "14", md: "13", sm: "12" }}>
               <strong>Asset Platform ID:</strong> {data.asset_platform_id}
             </Text>
           ) : null}
           {data.categories.length > 0 ? (
-            <Text fontSize={15}>
+            <Text fontSize={{ xl: "15", lg: "14", md: "13", sm: "12" }}>
               <strong>Categories: </strong>
               <span>
                 {data.categories.map((category) => (
@@ -91,7 +100,7 @@ function GeckoProtocol({ geckoData }) {
               </span>
             </Text>
           ) : null}
-          <Text>
+          <Text fontSize={{ xl: "15", lg: "14", md: "13", sm: "12" }}>
             <strong>Coin Gecko Rank: </strong>
             {data.market_cap_rank}
           </Text>

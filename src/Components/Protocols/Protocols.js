@@ -35,14 +35,23 @@ function Protocols() {
   return (
     <>
       <Center p={2}>
-        <Heading color="black">Protocols by TVL - DeFi Llama</Heading>
+        <Heading
+          fontSize={{ xl: "26", lg: "24", md: "22", sm: "20" }}
+          color="black"
+          m={2}
+        >
+          Protocols by TVL - DeFi Llama
+        </Heading>
       </Center>
       <Container
-        maxW="container.xl"
-        centerContent
+        maxW={{
+          xl: "container.xl",
+          lg: "container.lg",
+          md: "container.md",
+          sm: "container.sm",
+        }}
         borderRadius={6}
         border="2px"
-        mt={5}
         borderColor="blue.900"
       >
         <Table size="sm" variant="striped" colorScheme="gray">
@@ -50,27 +59,66 @@ function Protocols() {
 
           <Thead>
             <Tr>
-              <Th fontSize={15} color="black" p={2}>
-                Ranking
+              <Th
+                display={{
+                  xl: "table-cell",
+                  lg: "table-cell",
+                  md: "table-cell",
+                  sm: "none",
+                }}
+                fontSize={15}
+                color="black"
+                p={2}
+              >
+                <Center>Ranking</Center>
+              </Th>
+              <Th
+                display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+                fontSize={15}
+                color="black"
+                p={2}
+              >
+                <Center>Symbol</Center>
               </Th>
               <Th fontSize={15} color="black" p={2}>
-                Symbol
+                <Center>Name</Center>
               </Th>
-
-              <Th fontSize={15} color="black" p={2}>
-                Name
+              <Th
+                display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+                fontSize={15}
+                color="black"
+                p={2}
+              >
+                <Center> Category</Center>
+              </Th>
+              <Th
+                display={{
+                  xl: "table-cell",
+                  lg: "table-cell",
+                  md: "none",
+                  sm: "none",
+                }}
+                fontSize={15}
+                color="black"
+                p={2}
+              >
+                <Center>Chain</Center>
+              </Th>
+              <Th
+                display={{
+                  xl: "table-cell",
+                  lg: "none",
+                  md: "none",
+                  sm: "none",
+                }}
+                fontSize={15}
+                color="black"
+                p={2}
+              >
+                <Center> Market Cap </Center>
               </Th>
               <Th fontSize={15} color="black" p={2}>
-                Category
-              </Th>
-              <Th fontSize={15} color="black" p={2}>
-                Chain
-              </Th>
-              <Th fontSize={15} color="black" p={2}>
-                Market Cap
-              </Th>
-              <Th fontSize={15} color="black" p={2}>
-                Total Value Locked
+                <Center>Total Value Locked</Center>
               </Th>
             </Tr>
           </Thead>
@@ -81,8 +129,26 @@ function Protocols() {
               return (
                 <React.Fragment key={protocol.id}>
                   <Tr>
-                    <Td>{index + 1}</Td>
-                    <Td>{protocol.symbol}</Td>
+                    <Td
+                      display={{
+                        xl: "table-cell",
+                        lg: "table-cell",
+                        md: "table-cell",
+                        sm: "none",
+                      }}
+                    >
+                      <Center>{index + 1}</Center>
+                    </Td>
+                    <Td
+                      display={{
+                        xl: "flex",
+                        lg: "none",
+                        md: "none",
+                        sm: "none",
+                      }}
+                    >
+                      <Center> {protocol.symbol}</Center>
+                    </Td>
                     <Td>
                       <Link
                         to={{
@@ -90,17 +156,46 @@ function Protocols() {
                           state: protocol,
                         }}
                       >
-                        {protocol.name}
+                        <Center> {protocol.name} </Center>
                       </Link>
                     </Td>
-                    <Td>{protocol.category}</Td>
-                    <Td>{protocol.chain}</Td>
-                    <Td>
-                      {protocol.mcap
-                        ? `$${protocol.mcap.toLocaleString()}`
-                        : "-"}
+                    <Td
+                      display={{
+                        xl: "flex",
+                        lg: "none",
+                        md: "none",
+                        sm: "none",
+                      }}
+                    >
+                      <Center> {protocol.category} </Center>
                     </Td>
-                    <Td>${protocol.tvl.toLocaleString()}</Td>
+                    <Td
+                      display={{
+                        xl: "table-cell",
+                        lg: "table-cell",
+                        md: "none",
+                        sm: "none",
+                      }}
+                    >
+                      <Center> {protocol.chain} </Center>
+                    </Td>
+                    <Td
+                      display={{
+                        xl: "table-cell",
+                        lg: "none",
+                        md: "none",
+                        sm: "none",
+                      }}
+                    >
+                      {protocol.mcap ? (
+                        <Center>${protocol.mcap.toLocaleString()}</Center>
+                      ) : (
+                        <Center>-</Center>
+                      )}
+                    </Td>
+                    <Td>
+                      <Center>${protocol.tvl.toLocaleString()}</Center>
+                    </Td>
                   </Tr>
                 </React.Fragment>
               );

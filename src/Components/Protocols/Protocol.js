@@ -67,7 +67,12 @@ function Protocol() {
       </Center>
       <Center p={3}>
         <VStack p={1}>
-          <Text color="black">{protData.description}</Text>
+          <Text
+            fontSize={{ xl: "15", lg: "14", md: "13", sm: "12", xs: "11" }}
+            color="black"
+          >
+            {protData.description}
+          </Text>
 
           <Text>
             <a href={protData.url}>{protData.name}'s website </a>
@@ -98,7 +103,9 @@ function Protocol() {
       {geckoID ? (
         <GeckoProtocol geckoData={geckoData} />
       ) : (
-        <h3>No data available from Coin Gecko</h3>
+        <Center>
+          <Text fontSize={22}>No data available from Coin Gecko</Text>
+        </Center>
       )}
     </Container>
   );

@@ -88,7 +88,7 @@ const Header = (props) => {
       position="sticky"
       //direction="column"
       top="0"
-      w="99vw"
+      w="100vw"
       p={0}
       color={["white", "white", "white", "primary.700"]}
       bg={["blue.600", "blue.600", "blue.600", "blue.600"]}
@@ -108,7 +108,7 @@ const Header = (props) => {
         maxW="90vw"
         m="auto"
         px="20px"
-        py={5}
+        py={4}
       >
         <Flex align="center">
           <Logo onClick={menuItemCloseNav} />
