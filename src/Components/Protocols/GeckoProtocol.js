@@ -59,7 +59,6 @@ function GeckoProtocol({ geckoData }) {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
-  console.log(data);
   if (!infoLoaded) return <Loading />;
 
   return (

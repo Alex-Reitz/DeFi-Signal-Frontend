@@ -140,9 +140,8 @@ const About = () => {
             m="0 auto"
           >
             <Heading as="h3" align="center" mb="1rem">
-              Favorites & Notes
+              Favorites
             </Heading>
-            <Text fontSize="md">Your Notes</Text>
             <br />
             <Text fontSize="md">Your favorites</Text>
             <Box

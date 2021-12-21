@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import DeFiSignalApi from "../../api/api";
 import { Link } from "react-router-dom";
+import { CheckIcon, AddIcon } from "@chakra-ui/icons";
+
 import {
   Table,
   Thead,
@@ -73,7 +75,12 @@ function Protocols() {
                 <Center>Ranking</Center>
               </Th>
               <Th
-                display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
+                display={{
+                  xl: "table-cell",
+                  lg: "none",
+                  md: "none",
+                  sm: "none",
+                }}
                 fontSize={15}
                 color="black"
                 p={2}
@@ -81,7 +88,7 @@ function Protocols() {
                 <Center>Symbol</Center>
               </Th>
               <Th fontSize={15} color="black" p={2}>
-                <Center>Name</Center>
+                Name
               </Th>
               <Th
                 display={{ xl: "flex", lg: "none", md: "none", sm: "none" }}
@@ -141,7 +148,7 @@ function Protocols() {
                     </Td>
                     <Td
                       display={{
-                        xl: "flex",
+                        xl: "table-cell",
                         lg: "none",
                         md: "none",
                         sm: "none",
@@ -150,13 +157,22 @@ function Protocols() {
                       <Center> {protocol.symbol}</Center>
                     </Td>
                     <Td>
+                      <AddIcon
+                        _hover={{ cursor: "pointer" }}
+                        w={2.5}
+                        h={2.5}
+                        mr={2}
+                        p={0}
+                      />
                       <Link
                         to={{
                           pathname: `/protocol/${slug}`,
                           state: protocol,
                         }}
                       >
-                        <Center> {protocol.name} </Center>
+                        <Center display={"table-cell"} m={0} p={0}>
+                          {protocol.name}
+                        </Center>
                       </Link>
                     </Td>
                     <Td

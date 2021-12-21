@@ -57,7 +57,6 @@ function Protocol() {
     }
     getGeckoData(geckoID);
   }, []);
-  console.log(protData);
   return (
     <Container maxW="container.lg">
       <Center>
