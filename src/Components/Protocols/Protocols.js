@@ -3,7 +3,7 @@ import Loading from "../Loading/Loading";
 import DeFiSignalApi from "../../api/api";
 import { Link } from "react-router-dom";
 import { CheckIcon, AddIcon } from "@chakra-ui/icons";
-
+import ProtocolFavorite from "./ProtocolFavorite";
 import {
   Table,
   Thead,
@@ -157,13 +157,7 @@ function Protocols() {
                       <Center> {protocol.symbol}</Center>
                     </Td>
                     <Td>
-                      <AddIcon
-                        _hover={{ cursor: "pointer" }}
-                        w={2.5}
-                        h={2.5}
-                        mr={2}
-                        p={0}
-                      />
+                      <ProtocolFavorite />
                       <Link
                         to={{
                           pathname: `/protocol/${slug}`,
