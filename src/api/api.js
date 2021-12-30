@@ -108,6 +108,17 @@ class DeFiSignalApi {
     let res = await this.request(`data/${ID}`);
     return res;
   }
+  //Toggle Favorite
+  static async toggleFavorite(username, data) {
+    console.log(username, data, "toggle favorite api");
+    let res = await this.request(`users/${username}/favorites`, data, "patch");
+    return res;
+  }
+  //Get favorites for a specific user
+  static async getFavorites(username) {
+    let res = await this.request(`users/${username}/favorites`);
+    return res;
+  }
 }
 
 export default DeFiSignalApi;

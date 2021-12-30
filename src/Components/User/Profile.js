@@ -57,10 +57,8 @@ const About = () => {
 
       let username = currentUser.username;
       let updatedUser;
-      console.log(currentUser);
       try {
         updatedUser = await DeFiSignalApi.update(username, profileData);
-        console.log(updatedUser.user);
       } catch (errors) {
         setFormErrors(errors);
         return;

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import UserContext from "../Auth/UserContext";
 import Loading from "../Loading/Loading";
 import DeFiSignalApi from "../../api/api";
 import { Link } from "react-router-dom";
-import { CheckIcon, AddIcon } from "@chakra-ui/icons";
 import ProtocolFavorite from "./ProtocolFavorite";
 import {
   Table,
@@ -21,7 +21,16 @@ import {
 function Protocols() {
   const [protocols, setProtocols] = useState([]);
   const [infoLoaded, setInfoLoaded] = useState(false);
-
+  const [userFavorites, setUserFavorites] = useState([]);
+  const { currentUser } = useContext(UserContext);
+  useEffect(() => {
+    async function getFavorites() {
+      const res = await DeFiSignalApi.getFavorites(currentUser.username);
+      setUserFavorites(res);
+    }
+    getFavorites();
+  }, []);
+  console.log("user favorites", userFavorites);
   useEffect(() => {
     async function getProtocolData() {
       const res = await DeFiSignalApi.getProtocols();
@@ -157,7 +166,7 @@ function Protocols() {
                       <Center> {protocol.symbol}</Center>
                     </Td>
                     <Td>
-                      <ProtocolFavorite />
+                      <ProtocolFavorite slug={slug} />
                       <Link
                         to={{
                           pathname: `/protocol/${slug}`,

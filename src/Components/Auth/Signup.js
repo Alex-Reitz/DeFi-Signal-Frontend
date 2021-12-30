@@ -32,12 +32,10 @@ function Login({ signup }) {
 
   async function gatherInput(evt) {
     evt.preventDefault();
-    console.log(formData);
     const result = await signup({ ...formData });
     if (result.success) {
       history.push("/");
     } else {
-      console.log(result.error);
       setFormErrors(result.error);
     }
   }
