@@ -3,13 +3,14 @@ import UserContext from "../Auth/UserContext";
 import DeFiSignalApi from "../../api/api";
 import { CheckIcon, AddIcon } from "@chakra-ui/icons";
 
-function ProtocolFavorite({ slug }) {
-  const [click, setClick] = useState(false);
+function ProtocolFavorite({ slug, selectedProtocols }) {
+  const [click, setClick] = useState(
+    selectedProtocols.indexOf(slug) > -1 ? true : false
+  );
   const { currentUser } = useContext(UserContext);
   let userName = currentUser.username;
 
   async function toggle() {
-    console.log(userName, slug, "toggle function");
     const res = await DeFiSignalApi.toggleFavorite(userName, { slug });
     return res;
   }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../Auth/UserContext";
 import Alert from "../Loading/Alert";
 import {
@@ -20,7 +20,7 @@ import DeFiSignalApi from "../../api/api";
 
 const About = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-
+  const [userFavorites, setUserFavorites] = useState([]);
   const [formData, setFormData] = useState({
     firstName: currentUser ? currentUser.firstName : null,
     lastName: currentUser ? currentUser.lastName : null,
@@ -28,6 +28,14 @@ const About = () => {
   });
   const [formErrors, setFormErrors] = useState([]);
   const [saveConfirmed, setSaveConfirmed] = useState(false);
+  useEffect(() => {
+    async function getFavorites() {
+      const res = await DeFiSignalApi.getFavorites(currentUser.username);
+      setUserFavorites(res.selected);
+    }
+    getFavorites();
+  }, []);
+
   if (!currentUser) {
     return (
       <div className="profile-blank">
@@ -70,6 +78,10 @@ const About = () => {
 
       setCurrentUser(updatedUser.user);
     }
+
+    const selectedProtocols = userFavorites.map(
+      (protocol) => protocol.asset + " "
+    );
     return (
       <BaseContainer px="20px">
         <VStack spacing={8} py="2rem" padding="4">
@@ -137,11 +149,15 @@ const About = () => {
             mx="20px"
             m="0 auto"
           >
-            <Heading as="h3" align="center" mb="1rem">
-              Favorites
+            <Heading as="h3" align="center">
+              Your Favorites
             </Heading>
             <br />
-            <Text fontSize="md">Your favorites</Text>
+            <Text fontSize="md">
+              {selectedProtocols.map((fav) => (
+                <li>{fav}</li>
+              ))}
+            </Text>
             <Box
               display="flex"
               justifyContent="space-between"

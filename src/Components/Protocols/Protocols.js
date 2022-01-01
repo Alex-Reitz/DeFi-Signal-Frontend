@@ -26,11 +26,11 @@ function Protocols() {
   useEffect(() => {
     async function getFavorites() {
       const res = await DeFiSignalApi.getFavorites(currentUser.username);
-      setUserFavorites(res);
+      setUserFavorites(res.selected);
     }
     getFavorites();
   }, []);
-  console.log("user favorites", userFavorites);
+
   useEffect(() => {
     async function getProtocolData() {
       const res = await DeFiSignalApi.getProtocols();
@@ -42,7 +42,7 @@ function Protocols() {
   }, []);
 
   if (!infoLoaded) return <Loading />;
-
+  const selectedProtocols = userFavorites.map((protocol) => protocol.asset);
   return (
     <>
       <Center p={2}>
@@ -166,7 +166,10 @@ function Protocols() {
                       <Center> {protocol.symbol}</Center>
                     </Td>
                     <Td>
-                      <ProtocolFavorite slug={slug} />
+                      <ProtocolFavorite
+                        slug={slug}
+                        selectedProtocols={selectedProtocols}
+                      />
                       <Link
                         to={{
                           pathname: `/protocol/${slug}`,

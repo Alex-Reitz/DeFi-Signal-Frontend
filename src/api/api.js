@@ -110,7 +110,6 @@ class DeFiSignalApi {
   }
   //Toggle Favorite
   static async toggleFavorite(username, data) {
-    console.log(username, data, "toggle favorite api");
     let res = await this.request(`users/${username}/favorites`, data, "patch");
     return res;
   }
