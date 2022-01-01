@@ -23,64 +23,31 @@ function Home() {
   const [infoLoaded, setInfoLoaded] = useState(false);
 
   useEffect(() => {
-    async function getGasData() {
-      const res = await DeFiSignalApi.getGas();
-      setGasData(res);
-    }
-    async function ethMetrics() {
-      const res = await DeFiSignalApi.getEthMetrics();
-      setEthData(res.metrics.data);
-    }
-    async function solMetrics() {
-      const res = await DeFiSignalApi.getSolanaMetrics();
-      setSolData(res.metrics.data);
-    }
-    async function polygonMetrics() {
-      const res = await DeFiSignalApi.getPolygonMetrics();
-      setPolygonData(res.metrics.data);
-    }
-    async function bnbMetrics() {
-      const res = await DeFiSignalApi.getBNBMetrics();
-      setBNBData(res.metrics.data);
-    }
-    async function getTVLChart() {
-      const res = await DeFiSignalApi.charts();
-      setTVLChartData(res.slice(735));
-    }
-    async function getEthChart() {
-      const res = await DeFiSignalApi.EthChart();
-      setEthChartData(res.slice(735));
-    }
-    async function getBinanceChart() {
-      const res = await DeFiSignalApi.BinanceChart();
-      setBinanceChartData(res);
-    }
-    async function getSolanaChart() {
-      const res = await DeFiSignalApi.SolanaChart();
-      setSolanaChartData(res);
-    }
-    async function getPolygonChart() {
-      const res = await DeFiSignalApi.PolygonChart();
-      setPolygonChartData(res);
-    }
-
-    getGasData();
-    ethMetrics();
-    solMetrics();
-    polygonMetrics();
-    bnbMetrics();
-    getTVLChart();
-    getEthChart();
-    getBinanceChart();
-    getSolanaChart();
-    getPolygonChart();
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
+    async function getAllData() {
+      const gasRes = await DeFiSignalApi.getGas();
+      const ethMetricsRes = await DeFiSignalApi.getEthMetrics();
+      const solMetricsRes = await DeFiSignalApi.getSolanaMetrics();
+      const polygonMetricsRes = await DeFiSignalApi.getPolygonMetrics();
+      const bnbMetricsRes = await DeFiSignalApi.getBNBMetrics();
+      const TVLChartRes = await DeFiSignalApi.charts();
+      const ethChartRes = await DeFiSignalApi.EthChart();
+      const binanceChartRes = await DeFiSignalApi.BinanceChart();
+      const solChartRes = await DeFiSignalApi.SolanaChart();
+      const polygonChartRes = await DeFiSignalApi.PolygonChart();
+      setPolygonChartData(polygonChartRes);
+      setSolanaChartData(solChartRes);
+      setBinanceChartData(binanceChartRes);
+      setEthChartData(ethChartRes.slice(735));
+      setTVLChartData(TVLChartRes.slice(735));
+      setBNBData(bnbMetricsRes.metrics.data);
+      setPolygonData(polygonMetricsRes.metrics.data);
+      setSolData(solMetricsRes.metrics.data);
+      setEthData(ethMetricsRes.metrics.data);
+      setGasData(gasRes);
       setInfoLoaded(true);
-    }, 16000);
-    return () => clearTimeout(timer);
+    }
+    setInfoLoaded(false);
+    getAllData();
   }, []);
 
   if (!infoLoaded) return <Loading />;
